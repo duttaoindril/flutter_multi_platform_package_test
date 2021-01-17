@@ -72,11 +72,9 @@ If we want to opt to Option 1, the only stripe package that supports Web is [Str
 
 ## Stripe Problems
 
-
-
 Web Responsiveness
 
-- 
+- hi
 
 Flutter Webview:
 
