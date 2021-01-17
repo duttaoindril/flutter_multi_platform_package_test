@@ -60,6 +60,12 @@ If we want to opt to Option 1, the only stripe package that supports Web is [Str
 - Find a way to support web responsiveness better
   - https://github.com/Codelessly/ResponsiveFramework
   - https://pub.dev/packages/auto_size_text
+  - https://blog.codemagic.io/flutter-web-getting-started-with-responsive-design/
+  - 
+- Improve the web routing to not have the `#`
+  - https://stackoverflow.com/questions/49681415/flutter-persistent-navigation-bar-with-named-routes/59133502#59133502
+  - `setUrlStrategy(PathUrlStrategy());`
+    - https://stackoverflow.com/a/65709246
   - 
 - Implement Video calling so we can pass the app store
   - https://pub.dev/packages/flutter_speed_dial
@@ -74,7 +80,7 @@ If we want to opt to Option 1, the only stripe package that supports Web is [Str
 
 Web Responsiveness
 
-- hi
+- 
 
 Flutter Webview:
 
