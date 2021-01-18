@@ -8,7 +8,7 @@
             "name": "All Devices (Canvaskit)",
             "request": "launch",
             "type": "dart",
-            "deviceId": "chrome",
+            "deviceId": "all",
             "args": [
                 "--no-sound-null-safety",
                 "--web-renderer",
