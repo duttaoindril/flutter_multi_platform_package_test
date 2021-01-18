@@ -5,10 +5,10 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "All Devices (Canvaskit)",
+            "name": "Pick Device Debug (Canvaskit)",
             "request": "launch",
             "type": "dart",
-            "deviceId": "all",
+            "flutterMode": "debug",
             "args": [
                 "--no-sound-null-safety",
                 "--web-renderer",
@@ -22,6 +22,7 @@
             "request": "launch",
             "type": "dart",
             "deviceId": "chrome",
+            "flutterMode": "debug",
             "args": [
                 "--no-sound-null-safety",
                 "--web-renderer",
@@ -35,6 +36,7 @@
             "request": "launch",
             "type": "dart",
             "deviceId": "chrome",
+            "flutterMode": "debug",
             "args": [
                 "--no-sound-null-safety",
                 "--web-renderer",
@@ -85,6 +87,19 @@
                 "--web-port=4000",
                 "--dart-define=FLUTTER_WEB_USE_EXPERIMENTAL_CANVAS_TEXT=true",
             ]
+        },
+        {
+            "name": "Pick Device Profile (Canvaskit)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile",
+            "args": [
+                "--no-sound-null-safety",
+                "--web-renderer",
+                "canvaskit",
+                "--web-hostname=127.0.0.1",
+                "--web-port=4000"
+            ],
         },
     ]
 }
