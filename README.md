@@ -30,6 +30,16 @@ I also started looking at null safety, since starting next year it'll be in beta
 |                      [Fuzzy](https://pub.dev/packages/fuzzy) |     ✅👌✅     |         🚫🙅🚫         | Wait for null safety support.                                |
 |             [GetIt](https://pub.dev/packages/get_it/install) |     ✅👌✅     |         ✅👌✅         | It's a good package but, we also won't need it, especially after we migrate to Riverpod. |
 |                        [Http](https://pub.dev/packages/http) |     ✅👌✅     |         🚫🙅🚫         | Wait for null safety support.                                |
+|       [ImageCropper](https://pub.dev/packages/image_cropper) |             |                     |                                                              |
+|         [ImagePicker](https://pub.dev/packages/image_picker) |             |                     |                                                              |
+|        [Intercom](https://pub.dev/packages/intercom_flutter) |             |                     |                                                              |
+|                                                         intl |             |                     |                                                              |
+|                                                              |             |                     |                                                              |
+|                                                              |             |                     |                                                              |
+|                                                              |             |                     |                                                              |
+|                                                              |             |                     |                                                              |
+|                                                              |             |                     |                                                              |
+|                                                              |             |                     |                                                              |
 |                                                              |             |                     |                                                              |
 
 ## Decide between Canvas or HTML
@@ -41,7 +51,7 @@ Find all the pros and cons between them, what works and what doesn't, things to 
 - Emojis
 - Fonts
 - Images (cached?)
-- SVG (cached?)
+- SVG (cached?) - https://github.com/dnfield/flutter_svg
 - How do Graphical Packages look
 
 ## Firebase Problems
@@ -57,6 +67,7 @@ If we want to opt to Option 1, the only stripe package that supports Web is [Str
 - Find a better way to have document models, use generics or packages
 - Find a better way to have styling in flutter
   - Use https://pub.dev/packages/nested for all styling
+  - Or use https://pub.dev/packages/styled_widget
 - Find a way to support web responsiveness better
   - https://github.com/Codelessly/ResponsiveFramework
   - https://pub.dev/packages/auto_size_text
@@ -71,6 +82,7 @@ If we want to opt to Option 1, the only stripe package that supports Web is [Str
   - https://pub.dev/packages/flutter_speed_dial
   - https://pub.dev/packages/agora_rtc_engine
 - Add a splash screen for android, ios, web, macos
+  - https://pub.dev/packages/flutter_native_splash
   - https://pub.dev/flutter/packages?q=splash+screen&platform=ios+web+android
 - Get the highest score possible on Lighthouse for flutter web
   - 
@@ -129,3 +141,7 @@ Flutter Web Samples:
 - 
   - https://gallery.codelessly.com/flutterwebsites/flutterwebsite/#/
   - https://gallery.codelessly.com/flutterwebsites/minimal/#/
+
+Future:
+
+- https://pub.dev/packages/i18n_extension
