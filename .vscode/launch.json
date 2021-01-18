@@ -5,6 +5,19 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "All Devices (Canvaskit)",
+            "request": "launch",
+            "type": "dart",
+            "deviceId": "chrome",
+            "args": [
+                "--no-sound-null-safety",
+                "--web-renderer",
+                "canvaskit",
+                "--web-hostname=127.0.0.1",
+                "--web-port=4000"
+            ],
+        },
+        {
             "name": "Web Canvaskit",
             "request": "launch",
             "type": "dart",

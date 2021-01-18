@@ -90,6 +90,12 @@ If we want to opt to Option 1, the only stripe package that supports Web is [Str
 
 ## Stripe Problems
 
+
+
+## Hosting
+
+- https://blog.codemagic.io/publishing-web-apps-to-firebase-hosting/
+
 Web Responsiveness
 
 - 
@@ -141,6 +147,11 @@ Flutter Web Samples:
 - 
   - https://gallery.codelessly.com/flutterwebsites/flutterwebsite/#/
   - https://gallery.codelessly.com/flutterwebsites/minimal/#/
+
+Null Safety:
+
+- https://dart.dev/null-safety/migration-guide#migration-tool
+- Add `// @dart=2.9` to disable null checking in a file, but **<u>*DO NOT USE*</u>**
 
 Future:
 
