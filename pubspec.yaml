@@ -60,7 +60,7 @@ flutter:
   fonts: 
   - family: Emoji
     fonts: 
-      - asset: fonts/fallbacks/AppleColorEmoji.ttf 
+      - asset: fonts/fallbacks/NotoColorEmoji.ttf 
 
   # To add assets to your application, add an assets section, like this:
   # assets:

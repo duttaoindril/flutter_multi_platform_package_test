@@ -136,14 +136,23 @@ import 'package:fuzzy/data/result.dart';
 import 'package:fuzzy/fuzzy.dart';
 import 'package:get_it/get_it.dart';
 import 'package:http/http.dart' as http;
+import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 
 const String hi = 'Hi ⏰';
+void setPathStrategy() {
+  if (kIsWeb) {
+    setUrlStrategy(PathUrlStrategy());
+  }
+}
+
 Future<void> main() async {
   // This example uses the Google Books API to search for books about http.
   // https://developers.google.com/books/docs/overview
+
   const String url = 'https://www.googleapis.com/books/v1/volumes?q={http}';
 
   // Await the http get response, then decode the json-formatted response.
+  setPathStrategy();
   final http.Response response = await http.get(url);
   if (response.statusCode == 200) {
     final dynamic jsonResponse = convert.jsonDecode(response.body);
@@ -545,7 +554,7 @@ class MyHomePage extends HookWidget {
         onPressed: () => count.value++,
         tooltip: 'Increment',
         child: const Icon(
-          CupertinoIcons.airplane,
+          Icons.add,
         ),
       ),
     );
