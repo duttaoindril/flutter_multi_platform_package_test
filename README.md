@@ -86,6 +86,7 @@ If we want to opt into Plan A, the only stripe package that supports Web is [Str
 - Find a better way to have styling in flutter
   - Use https://pub.dev/packages/nested for all styling
   - Or use https://pub.dev/packages/styled_widget
+  - Or check out https://pub.dev/packages/velocity_x
   - Maybe use https://github.com/fayeed/flutter_parsed_text for body
 - Find a way to support web responsiveness better
   - https://github.com/Codelessly/ResponsiveFramework | https://pub.dev/packages/responsive_framework
