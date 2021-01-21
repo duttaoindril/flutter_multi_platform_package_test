@@ -51,11 +51,11 @@ I also started looking at null safety, since starting next year it'll be in beta
 | [SharedPreferences](https://pub.dev/packages/shared_preferences) |     ✅👌✅     |         🚫🙅🚫         | Wait for null safety support.                                |
 | [SimpleAnimations](https://pub.dev/packages/simple_animations) |     ✅👌✅     |         ✅👌✅         | N/A                                                          |
 |     [StripePayment](https://pub.dev/packages/stripe_payment) |     🚫🙅🚫     |         🚫🙅🚫         | There's no reliable stripe packages for mobile and web, so we need to make a full in house replacement. The good news is that the only two features the package provided was entering credit cards and verifying some specific card transactions, which will take a bit, but is possible, I think. |
-|       [TimelineTile](https://pub.dev/packages/timeline_tile) |     🚫🙅🚫     |         🚫🙅🚫         | ??? (Chieh)                                                  |
+|       [TimelineTile](https://pub.dev/packages/timeline_tile) |     ✅👌✅     |         🚫🙅🚫         | Wait for null safety support.                                |
 |                      [Tuple](https://pub.dev/packages/tuple) |     ✅👌✅     |         ✅👌✅         | N/A                                                          |
 |         [UrlLauncher](https://pub.dev/packages/url_launcher) |     ✅👌✅     |         ✅👌✅         | N/A                                                          |
 |              [Vibration](https://pub.dev/packages/vibration) |     ✅👌✅     |         ✅👌✅         | N/A                                                          |
-|   [WebViewFlutter](https://pub.dev/packages/webview_flutter) |     🚫🙅🚫     |         🚫🙅🚫         | Since web apps don't have web view, because, it is the web, I need to find a [hack](#FlutterWebview) to show websites in the website. Going to be a problem, especially with CSR and CORS. Maybe have to solve with tabs using a dynamic import. |
+|   [WebViewFlutter](https://pub.dev/packages/webview_flutter) |     🚫🙅🚫     |         ✅👌✅         | Since web apps don't have web view, because, it is the web, I need to find a [hack](#FlutterWebview) to show websites in the website. Going to be a problem, especially with CSR and CORS. Maybe have to solve with tabs using a dynamic import. |
 
 ## Chieh
 
@@ -63,7 +63,6 @@ I also started looking at null safety, since starting next year it'll be in beta
 - Figure out [PermissionHandler](https://pub.dev/packages/permission_handler) - I think you pulled in this package
 - Figure out [ReceiveSharingIntent](https://pub.dev/packages/receive_sharing_intent) - I don't think this exists on web at all, so all we have to do is make sure the feature works on android and ios and is ignored on web, probably a dynamic import
 - Figure out [Share](https://pub.dev/packages/share) and [ShareExtend](https://pub.dev/packages/share_extend) - Figure out if there's a web alternative, if there is get it to work on all 3, if it doesn't make a dynamic import and ignore it on web
-- Figure out [TimelineTile](https://pub.dev/packages/timeline_tile) - We either need an alternative or a replacement or make it work on web or something; maybe pull the package in internally
 - See if it's possible to have Firebase packages that aren't web ready in the code base being used in non web platforms; maybe they'll need a dynamic import with noop web mirror functions
 - Help test more things and help [Decide between Canvas or HTML](#decidebetweencanvasorhtml)
 
