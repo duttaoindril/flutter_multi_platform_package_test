@@ -84,6 +84,20 @@ Find all the pros and cons between them, what works and what doesn't, things to 
 - Images (cached?)
 - SVG (cached?) - https://github.com/dnfield/flutter_svg
 - How do Graphical Packages look
+- Test [Intl](https://pub.dev/packages/intl) works on web, is it better on canvas or html?
+- Test [MaskTextInputFormatter](https://pub.dev/packages/mask_text_input_formatter) works on web, is it better on canvas or html?
+- Test [PageTransition](https://pub.dev/packages/page_transition) works on web, is it better on canvas or html?
+- Test [PhotoView](https://pub.dev/packages/photo_view) works on web, is it better on canvas or html?
+- Test [PrettyQRCode](https://pub.dev/packages/pretty_qr_code) works on web, is it better on canvas or html?
+- Test [Provider](https://pub.dev/packages/provider) works on web, is it better on canvas or html?
+- Test [Recase](https://pub.dev/packages/recase) works on web, is it better on canvas or html?
+- Test [RxDart](https://pub.dev/packages/rxdart) works on web, is it better on canvas or html?
+- Test [SharedPreferences](https://pub.dev/packages/shared_preferences) works on web, is it better on canvas or html?
+- Test [SimpleAnimations](https://pub.dev/packages/simple_animations) works on web, is it better on canvas or html?
+- Test [TimelineTile](https://pub.dev/packages/timeline_tile) works on web, is it better on canvas or html?
+- Test [Tuple](https://pub.dev/packages/tuple) works on web, is it better on canvas or html?
+- Test [UrlLauncher](https://pub.dev/packages/url_launcher) works on web, is it better on canvas or html?
+- Test [Vibration](https://pub.dev/packages/vibration) works on web, is it better on canvas or html?
 
 ## Firebase Problems
 
