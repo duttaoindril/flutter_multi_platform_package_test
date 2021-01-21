@@ -3,8 +3,8 @@
 I’m focused on getting us web ready, and of the packages we are using, a few don’t support web. I don’t know how we’re going to actually deal with this, but a few ideas are:
 
 1. Plan A: Replace the package with an alternative that supports web.
-2. Plan B: Use conditional widgets or replacement imports - https://stackoverflow.com/a/60152950
-3. Plan C: Remove the package altogether and make our own alternative
+2. Plan B: Use conditional widgets or replacement imports - https://stackoverflow.com/a/60152950.
+3. Plan C: Remove the package altogether and make our own alternative or pull in the code and customize it.
 4. Plan D: Just wait for the package to support web.
 
 I also started looking at null safety, since starting next year it'll be in beta and we can start writing our code to be null safe, so here are the packages, their support status and what I think we should do for each:
@@ -30,32 +30,49 @@ I also started looking at null safety, since starting next year it'll be in beta
 |                      [Fuzzy](https://pub.dev/packages/fuzzy) |     ✅👌✅     |         🚫🙅🚫         | Wait for null safety support.                                |
 |             [GetIt](https://pub.dev/packages/get_it/install) |     ✅👌✅     |         ✅👌✅         | It's a good package but, we also won't need it, especially after we migrate to Riverpod. |
 |                        [Http](https://pub.dev/packages/http) |     ✅👌✅     |         🚫🙅🚫         | Wait for null safety support.                                |
-|       [ImageCropper](https://pub.dev/packages/image_cropper) |             |                     |                                                              |
-|         [ImagePicker](https://pub.dev/packages/image_picker) |             |                     |                                                              |
-|        [Intercom](https://pub.dev/packages/intercom_flutter) |             |                     |                                                              |
-|                        [Intl](https://pub.dev/packages/intl) |             |                     |                                                              |
-|       [LaunchReview](https://pub.dev/packages/launch_review) |             |                     |                                                              |
+|       [ImageCropper](https://pub.dev/packages/image_cropper) |     🚫🙅🚫     |         🚫🙅🚫         | ??? (Chieh)                                                  |
+|         [ImagePicker](https://pub.dev/packages/image_picker) |     🚫🙅🚫     |         🚫🙅🚫         | ??? (Chieh)                                                  |
+|        [Intercom](https://pub.dev/packages/intercom_flutter) |     🚫🙅🚫     |         🚫🙅🚫         | Costs a lot, so we need to decide if we want to keep it or replace it with something else. If we want to keep it, we have to make it work in Flutter Web, which looks like it won't be a good implementation any time soon. If we want to replace it, I want to go with this Flutter compatible one called [Papercups](https://pub.dev/packages/papercups_flutter ). Or we don't have either. Either way, I need to stick in Segment for event tracking for stall points and admin panel data, and I want to use [Storytime](https://github.com/papercups-io/storytime) on Flutter Web. |
+|                        [Intl](https://pub.dev/packages/intl) |     ✅👌✅     |         ✅👌✅         | N/A                                                          |
+|       [LaunchReview](https://pub.dev/packages/launch_review) |     🚫🙅🚫     |         🚫🙅🚫         | I found something a million times better. [InAppReview](https://pub.dev/packages/in_app_review). Web doesn't have a replacement, so I just need to make the whole thing work at minimum to [send feedback to us](https://pub.dev/packages/rating_dialog) for the NPS score in the Admin Panel, and if it's a positive score and not on web it opens the in app review prompt. |
 | [MaskTextInputFormatter](https://pub.dev/packages/mask_text_input_formatter) |     ✅👌✅     |         ✅👌✅         | N/A                                                          |
 |                        [Mime](https://pub.dev/packages/mime) |     ✅👌✅     |         ✅👌✅         | N/A                                                          |
 |   [PageTransition](https://pub.dev/packages/page_transition) |     ✅👌✅     |         ✅👌✅         | N/A                                                          |
-|       [PathProvider](https://pub.dev/packages/path_provider) |     🚫🙅🚫     |         🚫🙅🚫         | Remove, unneeded.                                            |
-| [PermissionHandler](https://pub.dev/packages/permission_handler) |             |                     |                                                              |
-|             [PhotoView](https://pub.dev/packages/photo_view) |     ✅👌✅     |         🚫🙅🚫         |                                                              |
-|      [PrettyQRCode](https://pub.dev/packages/pretty_qr_code) |     ✅👌✅     |         🚫🙅🚫         |                                                              |
+|       [PathProvider](https://pub.dev/packages/path_provider) |     🚫🙅🚫     |         🚫🙅🚫         | Remove, unneeded with Web.                                   |
+| [PermissionHandler](https://pub.dev/packages/permission_handler) |     🚫🙅🚫     |         🚫🙅🚫         | ??? (Chieh)                                                  |
+|             [PhotoView](https://pub.dev/packages/photo_view) |     ✅👌✅     |         🚫🙅🚫         | Wait for null safety support.                                |
+|      [PrettyQRCode](https://pub.dev/packages/pretty_qr_code) |     ✅👌✅     |         🚫🙅🚫         | Wait for null safety support. We can use it if we want to.   |
 |                [Provider](https://pub.dev/packages/provider) |     ✅👌✅     |         ✅👌✅         | Replace with [Riverpod](https://pub.dev/packages/hooks_riverpod) after [null-safe](https://github.com/rrousselGit/river_pod/issues/220) |
 |                    [Recase](https://pub.dev/packages/recase) |     ✅👌✅     |         ✅👌✅         | N/A                                                          |
-| [ReceiveSharingIntent](https://pub.dev/packages/receive_sharing_intent) |             |                     |                                                              |
+| [ReceiveSharingIntent](https://pub.dev/packages/receive_sharing_intent) |     🚫🙅🚫     |         🚫🙅🚫         | ??? (Chieh)                                                  |
 |                    [RxDart](https://pub.dev/packages/rxdart) |     ✅👌✅     |         ✅👌✅         | N/A                                                          |
-|                      [Share](https://pub.dev/packages/share) |             |         ✅👌✅         | Either Plan A: Replace with [SharePlus](https://pub.dev/packages/share_plus) or go with Plan B. |
-|         [ShareExtend](https://pub.dev/packages/share_extend) |             |                     |                                                              |
-| [SharedPreferences](https://pub.dev/packages/shared_preferences) |     ✅👌✅     |         🚫🙅🚫         |                                                              |
+|                      [Share](https://pub.dev/packages/share) |     🚫🙅🚫     |         ✅👌✅         | ??? (Chieh) Either Plan A: Replace with [SharePlus](https://pub.dev/packages/share_plus) or go with Plan B. |
+|         [ShareExtend](https://pub.dev/packages/share_extend) |     🚫🙅🚫     |         🚫🙅🚫         | ??? (Chieh)                                                  |
+| [SharedPreferences](https://pub.dev/packages/shared_preferences) |     ✅👌✅     |         🚫🙅🚫         | Wait for null safety support.                                |
 | [SimpleAnimations](https://pub.dev/packages/simple_animations) |     ✅👌✅     |         ✅👌✅         | N/A                                                          |
-|     [StripePayment](https://pub.dev/packages/stripe_payment) |             |                     |                                                              |
-|       [TimelineTile](https://pub.dev/packages/timeline_tile) |             |                     |                                                              |
+|     [StripePayment](https://pub.dev/packages/stripe_payment) |     🚫🙅🚫     |         🚫🙅🚫         | There's no reliable stripe packages for mobile and web, so we need to make a full in house replacement. The good news is that the only two features the package provided was entering credit cards and verifying some specific card transactions, which will take a bit, but is possible, I think. |
+|       [TimelineTile](https://pub.dev/packages/timeline_tile) |     🚫🙅🚫     |         🚫🙅🚫         | ??? (Chieh)                                                  |
 |                      [Tuple](https://pub.dev/packages/tuple) |     ✅👌✅     |         ✅👌✅         | N/A                                                          |
 |         [UrlLauncher](https://pub.dev/packages/url_launcher) |     ✅👌✅     |         ✅👌✅         | N/A                                                          |
 |              [Vibration](https://pub.dev/packages/vibration) |     ✅👌✅     |         ✅👌✅         | N/A                                                          |
-|   [WebViewFlutter](https://pub.dev/packages/webview_flutter) |             |                     |                                                              |
+|   [WebViewFlutter](https://pub.dev/packages/webview_flutter) |     🚫🙅🚫     |         🚫🙅🚫         | Since web apps don't have web view, because, it is the web, I need to find a [hack](#FlutterWebview) to show websites in the website. Going to be a problem, especially with CSR and CORS. Maybe have to solve with tabs using a dynamic import. |
+
+## Chieh
+
+- Figure out [ImagePicker](https://pub.dev/packages/image_picker) and [ImageCropper](https://pub.dev/packages/image_cropper) - We need full replacements for this, or mish mash our own, or worst case we pull it all into our code and make it work
+- Figure out [PermissionHandler](https://pub.dev/packages/permission_handler) - I think you pulled in this package
+- Figure out [ReceiveSharingIntent](https://pub.dev/packages/receive_sharing_intent) - I don't think this exists on web at all, so all we have to do is make sure the feature works on android and ios and is ignored on web, probably a dynamic import
+- Figure out [Share](https://pub.dev/packages/share) and [ShareExtend](https://pub.dev/packages/share_extend) - Figure out if there's a web alternative, if there is get it to work on all 3, if it doesn't make a dynamic import and ignore it on web
+- Figure out [TimelineTile](https://pub.dev/packages/timeline_tile) - We either need an alternative or a replacement or make it work on web or something; maybe pull the package in internally
+- See if it's possible to have Firebase packages that aren't web ready in the code base being used in non web platforms; maybe they'll need a dynamic import with noop web mirror functions
+- Help test more things and help [Decide between Canvas or HTML](#decidebetweencanvasorhtml)
+
+## Oindril
+
+- Need to figure out [StripePayment](https://pub.dev/packages/stripe_payment) - There's no reliable stripe packages for mobile and web, so we need to make a full in house replacement. The good news is that the only two features the package provided was entering credit cards and verifying some specific card transactions, which will take a bit, but is possible, I think 
+- Need to figure out [WebViewFlutter](https://pub.dev/packages/webview_flutter) - Since web apps don't have web view, because, it is the web, I need to find a hack to show websites in the website. Going to be a problem, especially with CSR and CORS. Maybe have to solve with tabs using a dynamic import.
+- Need to figure out [LaunchReview](https://pub.dev/packages/launch_review) - I found a million times better thing. In app review. Web doesn't have a replacement, so I just need to make the whole thing work with at minimum to send feedback to us for an NPS score in the Admin Panel, and if it's a positive score and not on web it opens the in app review prompt.
+- Need to figure out [Intercom](https://pub.dev/packages/intercom_flutter) - it costs a lot, so need to decide with Andrew if we keep it or replace it with something else. If we want to keep it, we have to make it work in Flutter, if we want to replace it, I want to go with this Flutter compatible one called Papercups. Or we don't have either. Either way, I need to stick in Segment for event tracking for stall points and admin panel data.
 
 ## Decide between Canvas or HTML
 
@@ -104,8 +121,8 @@ If we want to opt into Plan A, the only stripe package that supports Web is [Str
 - Add a splash screen for android, ios, web, macos
   - https://pub.dev/packages/flutter_native_splash
   - https://pub.dev/flutter/packages?q=splash+screen&platform=ios+web+android
-- Get the highest score possible on Lighthouse for flutter web
-  - 
+- Get the highest scores possible on Lighthouse for flutter web
+  - It's ok if performance ins't the best
 - Since we're doing web, add desktop support with Electron and MacOS
   - https://github.com/hayderux/electron-flutter
 - Replace feedback dialog with
@@ -130,7 +147,7 @@ Web Responsiveness
 
 - https://flutter.dev/docs/development/ui/layout/responsive
 
-Flutter Webview:
+ ### FlutterWebview:
 
 - https://stackoverflow.com/questions/58150503/webview-in-flutter-web
 - https://pub.dev/packages/easy_web_view
