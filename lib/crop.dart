@@ -37,27 +37,30 @@ class _CropImageState extends State<CropImage> {
             BuildContext context,
             AsyncSnapshot<ui.Image> snapshot,
           ) {
-            return Column(
-              children: <Widget>[
-                Expanded(
-                  child: ImageCrop(
-                    key: key,
-                    image: snapshot.data,
+            if (snapshot.connectionState == ConnectionState.done) {
+              return Column(
+                children: <Widget>[
+                  Expanded(
+                    child: ImageCrop(
+                      key: key,
+                      image: snapshot.data,
+                    ),
                   ),
-                ),
-                FlatButton(
-                  onPressed: () async {
-                    final ImageCropState? imageState = key.currentState;
-                    if (imageState != null) {
-                      final ui.Image croppedImage =
-                          await imageState.cropImage();
-                      await widget.onPress(croppedImage);
-                    }
-                  },
-                  child: const Text('Okay'),
-                ),
-              ],
-            );
+                  FlatButton(
+                    onPressed: () async {
+                      final ImageCropState? imageState = key.currentState;
+                      if (imageState != null) {
+                        final ui.Image croppedImage =
+                            await imageState.cropImage();
+                        await widget.onPress(croppedImage);
+                      }
+                    },
+                    child: const Text('Okay'),
+                  ),
+                ],
+              );
+            }
+            return const SizedBox();
           },
         ),
       ),
