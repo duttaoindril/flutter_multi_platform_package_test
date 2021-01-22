@@ -116,20 +116,23 @@
 import 'dart:async';
 import 'dart:convert' as convert;
 import 'dart:typed_data';
+import 'dart:ui' as ui;
 
-import 'package:animations/animations.dart';
-import 'package:async/async.dart' hide Result;
-import 'package:badges/badges.dart';
-import 'package:carousel_slider/carousel_slider.dart';
-import 'package:characters/characters.dart';
+// import 'package:animations/animations.dart';
+// import 'package:async/async.dart' hide Result;
+// import 'package:badges/badges.dart';
+// import 'package:carousel_slider/carousel_slider.dart';
+// import 'package:characters/characters.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:flutter_icons/flutter_icons.dart';
+// import 'package:flutter_icons/flutter_icons.dart';
+import 'package:flutter_multi_platform_package_test/crop.dart';
 // import 'package:flutter_page_indicator/flutter_page_indicator.dart';
-import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+// import 'package:flutter_slidable/flutter_slidable.dart';
+// import 'package:flutter_spinkit/flutter_spinkit.dart';
+// import 'package:flutter_svg/flutter_svg.dart';
 // import 'package:flutter_swiper/flutter_swiper.dart';
-import 'package:flutter_typeahead/flutter_typeahead.dart';
+// import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -202,28 +205,28 @@ class MyHomePage extends HookWidget {
     final GetIt getIt = GetIt.instance;
     print(getIt.hashCode);
     final ValueNotifier<int> count = useState<int>(0);
-    final RestartableTimer timer = RestartableTimer(
-      const Duration(
-        seconds: 5,
-      ),
-      () {
-        print('Time out!');
-      },
-    );
+    // final RestartableTimer timer = RestartableTimer(
+    //   const Duration(
+    //     seconds: 5,
+    //   ),
+    //   () {
+    //     print('Time out!');
+    //   },
+    // );
     // final ValueNotifier<int> timeTick = useState<int>(0);
-    int timeTick = timer.tick;
-    final ValueNotifier<Timer> everySecond = useValueNotifier<Timer>(
-      Timer.periodic(
-        const Duration(seconds: 1),
-        (
-          Timer everySecondTimer,
-        ) {
-          timeTick = timer.tick;
-          // timeTick.value = timer.tick;
-        },
-      ),
-    );
-    print(everySecond.value.tick);
+    // int timeTick = timer.tick;
+    // final ValueNotifier<Timer> everySecond = useValueNotifier<Timer>(
+    //   Timer.periodic(
+    //     const Duration(seconds: 1),
+    //     (
+    //       Timer everySecondTimer,
+    //     ) {
+    //       timeTick = timer.tick;
+    //       // timeTick.value = timer.tick;
+    //     },
+    //   ),
+    // );
+    // print(everySecond.value.tick);
     // final List<String> images = <String>[
     //   'https://firebasestorage.googleapis.com/v0/b/spotlyt-dev.appspot.com/o/logo_1000x1000.png?alt=media&token=f8881b6e-8178-458b-a0f5-bbf83913daec',
     //   'https://firebasestorage.googleapis.com/v0/b/spotlyt-dev.appspot.com/o/logo_1000x1000.png?alt=media&token=f8881b6e-8178-458b-a0f5-bbf83913daec',
@@ -277,247 +280,276 @@ class MyHomePage extends HookWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                SelectableText(
-                  'You have pushed the button this many times:',
-                  onTap: () {
-                    showModal<void>(
-                      context: context,
-                      useRootNavigator: true,
-                      configuration: const FadeScaleTransitionConfiguration(
-                        barrierColor: Colors.purpleAccent,
-                        barrierLabel: 'Woo!',
-                        barrierDismissible: true,
-                        transitionDuration: const Duration(
-                          milliseconds: 250,
-                        ),
-                        reverseTransitionDuration: const Duration(
-                          milliseconds: 500,
-                        ),
-                      ),
-                      builder: (BuildContext context) {
-                        return Card(
-                          child: RaisedButton(
-                            onPressed: timer.reset,
-                          ),
-                        );
-                      },
-                    );
-                  },
-                ),
-                SelectableText(
-                  'String is "$hi"\nCharacters.length: ${hi.characters.length}\nThe last character: ${hi.characters.last}\nSkipping last character: ${hi.characters.skipLast(1)}\n',
-                  style: (Theme.of(context).textTheme.headline4 ??
-                          const TextStyle())
-                      .copyWith(
-                    fontFamilyFallback: const <String>[
-                      'Emoji',
-                    ],
-                  ),
-                ),
-                SelectableText(
-                  '${count.value}',
-                  style: Theme.of(context).textTheme.headline4,
-                ),
-                SelectableText(
-                  'Timer: $timeTick',
-                  // 'Timer: ${timeTick.value}',
-                  style: Theme.of(context).textTheme.headline4,
-                ),
-                CarouselSlider(
-                  options: CarouselOptions(),
-                  items: <int>[1, 2, 3, 4, 5]
-                      .map(
-                        (int item) => OpenContainer<int>(
-                          openBuilder: (
-                            BuildContext context,
-                            void Function({int returnValue}) close,
-                          ) {
-                            return Material(
-                              color: Colors.red,
-                              child: InkWell(
-                                onTap: close,
-                                child: Center(
-                                  child: Text(
-                                    item.toString(),
-                                  ),
-                                ),
-                              ),
-                            );
-                          },
-                          closedBuilder: (
-                            BuildContext context,
-                            VoidCallback open,
-                          ) {
-                            return Material(
-                              color: Colors.green,
-                              child: InkWell(
-                                onTap: open,
-                                child: Center(
-                                  child: Text(
-                                    item.toString(),
-                                  ),
-                                ),
-                              ),
-                            );
-                          },
-                        ),
-                      )
-                      .toList(),
-                ),
-                Badge(
-                  badgeContent: const Text('3'),
-                  child: FadeInImage.memoryNetwork(
-                    image:
-                        'https://firebasestorage.googleapis.com/v0/b/spotlyt-dev.appspot.com/o/logo_1000x1000.png?alt=media&token=f8881b6e-8178-458b-a0f5-bbf83913daec',
-                    placeholder: kTransparentImage,
-                    imageErrorBuilder: (
-                      BuildContext context,
-                      Object url,
-                      StackTrace? error,
-                    ) =>
-                        const Icon(
-                      Icons.error,
-                    ),
-                  ),
-                ),
-                const Icon(
-                  AntDesign.stepforward,
-                  size: 100,
-                ),
-                const Icon(
-                  Ionicons.ios_search,
-                  size: 100,
-                ),
-                const Icon(
-                  FontAwesome.glass,
-                  size: 100,
-                ),
-                const Icon(
-                  MaterialIcons.ac_unit,
-                  size: 100,
-                ),
-                const Icon(
-                  FontAwesome5.address_book,
-                  size: 100,
-                ),
-                const Icon(
-                  FontAwesome5Solid.address_book,
-                  size: 100,
-                ),
-                const Icon(
-                  FontAwesome5Brands.$500px,
-                  size: 100,
-                ),
-                Slidable(
-                  actionPane: const SlidableDrawerActionPane(),
-                  actionExtentRatio: 0.25,
-                  actions: <Widget>[
-                    IconSlideAction(
-                      caption: 'Archive',
-                      color: Colors.blue,
-                      icon: Icons.archive,
-                      onTap: () => print('Archive'),
-                    ),
-                    IconSlideAction(
-                      caption: 'Share',
-                      color: Colors.indigo,
-                      icon: Icons.share,
-                      onTap: () => print('Share'),
-                    ),
-                  ],
-                  secondaryActions: <Widget>[
-                    IconSlideAction(
-                      caption: 'More',
-                      color: Colors.black45,
-                      icon: Icons.more_horiz,
-                      onTap: () => print('More'),
-                    ),
-                    IconSlideAction(
-                      caption: 'Delete',
-                      color: Colors.red,
-                      icon: Icons.delete,
-                      onTap: () => print('Delete'),
-                    ),
-                  ],
-                  child: Container(
-                    color: Colors.white,
-                    child: const ListTile(
-                      leading: CircleAvatar(
-                        backgroundColor: Colors.indigoAccent,
-                        foregroundColor: Colors.white,
-                        child: Text('3'),
-                      ),
-                      title: Text('Tile n°3'),
-                      subtitle: Text('SlidableDrawerDelegate'),
-                    ),
-                  ),
-                ),
-                TypeAheadField<String>(
-                  textFieldConfiguration: TextFieldConfiguration<String>(
-                    autofocus: true,
-                    style: DefaultTextStyle.of(
+                RaisedButton(
+                  textColor: Colors.black,
+                  onPressed: () async {
+                    final FilePickerResult result = await FilePicker.platform
+                        .pickFiles(type: FileType.image);
+                    final Uint8List byteImage = result.files.first.bytes;
+
+                    await Navigator.push(
                       context,
-                    ).style.copyWith(
-                          fontStyle: FontStyle.italic,
-                        ),
-                    decoration: const InputDecoration(
-                      border: const OutlineInputBorder(),
-                    ),
-                  ),
-                  suggestionsCallback: (String pattern) async {
-                    return <String>[pattern];
-                  },
-                  itemBuilder: (BuildContext context, String suggestion) {
-                    return ListTile(
-                      leading: const Icon(Icons.shopping_cart),
-                      title: Text(suggestion),
-                      subtitle: const Text('omg'),
-                    );
-                  },
-                  onSuggestionSelected: (String suggestion) {
-                    Navigator.of(context).push<void>(
-                      MaterialPageRoute<void>(
-                        builder: (BuildContext context) => Text(
-                          suggestion,
-                        ),
+                      MaterialPageRoute<Widget>(
+                        builder: (BuildContext context) {
+                          return CropImage(
+                            inputByteImage: byteImage,
+                            onPress: (ui.Image croppedImage) {
+                              showModalBottomSheet<RawImage>(
+                                  context: context,
+                                  builder: (BuildContext context) => RawImage(
+                                        image: croppedImage,
+                                        fit: BoxFit.contain,
+                                        height: croppedImage.height.toDouble(),
+                                      ));
+                            },
+                          );
+                        },
                       ),
                     );
                   },
+                  child: const Text('Get Pic'),
                 ),
-                const SpinKitRotatingCircle(
-                  color: Colors.white,
-                  size: 50,
-                ),
-                SpinKitFadingCircle(
-                  itemBuilder: (BuildContext context, int index) {
-                    return DecoratedBox(
-                      decoration: BoxDecoration(
-                        color: index.isEven ? Colors.red : Colors.green,
-                      ),
-                    );
-                  },
-                ),
-                const SpinKitSquareCircle(
-                  color: Colors.white,
-                  size: 50,
-                ),
-                const SizedBox(
-                  height: 50,
-                ),
-                SvgPicture.asset(
-                  'firefox.svg',
-                  fit: BoxFit.cover,
-                  height: 200,
-                  semanticsLabel: 'Firefox Logo',
-                  width: 200,
-                ),
-                SvgPicture.network(
-                  'https://firebasestorage.googleapis.com/v0/b/spotlyt-dev.appspot.com/o/firefox-logo.svg?alt=media&token=37cf98b7-3ce5-4f70-b117-552df1c366a5',
-                  fit: BoxFit.cover,
-                  height: 200,
-                  semanticsLabel: 'Firefox Logo',
-                  width: 200,
-                ),
+                // SelectableText(
+                //   'You have pushed the button this many times:',
+                //   onTap: () {
+                //     showModal<void>(
+                //       context: context,
+                //       useRootNavigator: true,
+                //       configuration: const FadeScaleTransitionConfiguration(
+                //         barrierColor: Colors.purpleAccent,
+                //         barrierLabel: 'Woo!',
+                //         barrierDismissible: true,
+                //         transitionDuration: const Duration(
+                //           milliseconds: 250,
+                //         ),
+                //         reverseTransitionDuration: const Duration(
+                //           milliseconds: 500,
+                //         ),
+                //       ),
+                //       builder: (BuildContext context) {
+                //         return Card(
+                //           child: RaisedButton(
+                //             onPressed: timer.reset,
+                //           ),
+                //         );
+                //       },
+                //     );
+                //   },
+                // ),
+                // SelectableText(
+                //   'String is "$hi"\nCharacters.length: ${hi.characters.length}\nThe last character: ${hi.characters.last}\nSkipping last character: ${hi.characters.skipLast(1)}\n',
+                //   style: (Theme.of(context).textTheme.headline4 ??
+                //           const TextStyle())
+                //       .copyWith(
+                //     fontFamilyFallback: const <String>[
+                //       'Emoji',
+                //     ],
+                //   ),
+                // ),
+                // SelectableText(
+                //   '${count.value}',
+                //   style: Theme.of(context).textTheme.headline4,
+                // ),
+                // SelectableText(
+                //   'Timer: $timeTick',
+                //   // 'Timer: ${timeTick.value}',
+                //   style: Theme.of(context).textTheme.headline4,
+                // ),
+                // CarouselSlider(
+                //   options: CarouselOptions(),
+                //   items: <int>[1, 2, 3, 4, 5]
+                //       .map(
+                //         (int item) => OpenContainer<int>(
+                //           openBuilder: (
+                //             BuildContext context,
+                //             void Function({int returnValue}) close,
+                //           ) {
+                //             return Material(
+                //               color: Colors.red,
+                //               child: InkWell(
+                //                 onTap: close,
+                //                 child: Center(
+                //                   child: Text(
+                //                     item.toString(),
+                //                   ),
+                //                 ),
+                //               ),
+                //             );
+                //           },
+                //           closedBuilder: (
+                //             BuildContext context,
+                //             VoidCallback open,
+                //           ) {
+                //             return Material(
+                //               color: Colors.green,
+                //               child: InkWell(
+                //                 onTap: open,
+                //                 child: Center(
+                //                   child: Text(
+                //                     item.toString(),
+                //                   ),
+                //                 ),
+                //               ),
+                //             );
+                //           },
+                //         ),
+                //       )
+                //       .toList(),
+                // ),
+                // Badge(
+                //   badgeContent: const Text('3'),
+                //   child: FadeInImage.memoryNetwork(
+                //     image:
+                //         'https://firebasestorage.googleapis.com/v0/b/spotlyt-dev.appspot.com/o/logo_1000x1000.png?alt=media&token=f8881b6e-8178-458b-a0f5-bbf83913daec',
+                //     placeholder: kTransparentImage,
+                //     imageErrorBuilder: (
+                //       BuildContext context,
+                //       Object url,
+                //       StackTrace? error,
+                //     ) =>
+                //         const Icon(
+                //       Icons.error,
+                //     ),
+                //   ),
+                // ),
+                // const Icon(
+                //   AntDesign.stepforward,
+                //   size: 100,
+                // ),
+                // const Icon(
+                //   Ionicons.ios_search,
+                //   size: 100,
+                // ),
+                // const Icon(
+                //   FontAwesome.glass,
+                //   size: 100,
+                // ),
+                // const Icon(
+                //   MaterialIcons.ac_unit,
+                //   size: 100,
+                // ),
+                // const Icon(
+                //   FontAwesome5.address_book,
+                //   size: 100,
+                // ),
+                // const Icon(
+                //   FontAwesome5Solid.address_book,
+                //   size: 100,
+                // ),
+                // const Icon(
+                //   FontAwesome5Brands.$500px,
+                //   size: 100,
+                // ),
+                // Slidable(
+                //   actionPane: const SlidableDrawerActionPane(),
+                //   actionExtentRatio: 0.25,
+                //   actions: <Widget>[
+                //     IconSlideAction(
+                //       caption: 'Archive',
+                //       color: Colors.blue,
+                //       icon: Icons.archive,
+                //       onTap: () => print('Archive'),
+                //     ),
+                //     IconSlideAction(
+                //       caption: 'Share',
+                //       color: Colors.indigo,
+                //       icon: Icons.share,
+                //       onTap: () => print('Share'),
+                //     ),
+                //   ],
+                //   secondaryActions: <Widget>[
+                //     IconSlideAction(
+                //       caption: 'More',
+                //       color: Colors.black45,
+                //       icon: Icons.more_horiz,
+                //       onTap: () => print('More'),
+                //     ),
+                //     IconSlideAction(
+                //       caption: 'Delete',
+                //       color: Colors.red,
+                //       icon: Icons.delete,
+                //       onTap: () => print('Delete'),
+                //     ),
+                //   ],
+                //   child: Container(
+                //     color: Colors.white,
+                //     child: const ListTile(
+                //       leading: CircleAvatar(
+                //         backgroundColor: Colors.indigoAccent,
+                //         foregroundColor: Colors.white,
+                //         child: Text('3'),
+                //       ),
+                //       title: Text('Tile n°3'),
+                //       subtitle: Text('SlidableDrawerDelegate'),
+                //     ),
+                //   ),
+                // ),
+                // TypeAheadField<String>(
+                //   textFieldConfiguration: TextFieldConfiguration<String>(
+                //     autofocus: true,
+                //     style: DefaultTextStyle.of(
+                //       context,
+                //     ).style.copyWith(
+                //           fontStyle: FontStyle.italic,
+                //         ),
+                //     decoration: const InputDecoration(
+                //       border: const OutlineInputBorder(),
+                //     ),
+                //   ),
+                //   suggestionsCallback: (String pattern) async {
+                //     return <String>[pattern];
+                //   },
+                //   itemBuilder: (BuildContext context, String suggestion) {
+                //     return ListTile(
+                //       leading: const Icon(Icons.shopping_cart),
+                //       title: Text(suggestion),
+                //       subtitle: const Text('omg'),
+                //     );
+                //   },
+                //   onSuggestionSelected: (String suggestion) {
+                //     Navigator.of(context).push<void>(
+                //       MaterialPageRoute<void>(
+                //         builder: (BuildContext context) => Text(
+                //           suggestion,
+                //         ),
+                //       ),
+                //     );
+                //   },
+                // ),
+                // const SpinKitRotatingCircle(
+                //   color: Colors.white,
+                //   size: 50,
+                // ),
+                // SpinKitFadingCircle(
+                //   itemBuilder: (BuildContext context, int index) {
+                //     return DecoratedBox(
+                //       decoration: BoxDecoration(
+                //         color: index.isEven ? Colors.red : Colors.green,
+                //       ),
+                //     );
+                //   },
+                // ),
+                // const SpinKitSquareCircle(
+                //   color: Colors.white,
+                //   size: 50,
+                // ),
+                // const SizedBox(
+                //   height: 50,
+                // ),
+                // SvgPicture.asset(
+                //   'firefox.svg',
+                //   fit: BoxFit.cover,
+                //   height: 200,
+                //   semanticsLabel: 'Firefox Logo',
+                //   width: 200,
+                // ),
+                // SvgPicture.network(
+                //   'https://firebasestorage.googleapis.com/v0/b/spotlyt-dev.appspot.com/o/firefox-logo.svg?alt=media&token=37cf98b7-3ce5-4f70-b117-552df1c366a5',
+                //   fit: BoxFit.cover,
+                //   height: 200,
+                //   semanticsLabel: 'Firefox Logo',
+                //   width: 200,
+                // ),
                 // Swiper(
                 //   itemBuilder: (BuildContext context, int index) {
                 //     return FadeInImage.memoryNetwork(

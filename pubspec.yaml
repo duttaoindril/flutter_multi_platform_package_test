@@ -26,7 +26,9 @@ dependencies:
   badges: ^1.1.6
   carousel_slider: ^2.3.1
   characters: ^1.1.0-nullsafety
+  crop: ^0.4.2
   # cupertino_icons: ^1.0.2
+  file_picker: ^2.1.5+1
   flutter:
     sdk: flutter
   flutter_hooks: ^0.15.0
@@ -39,6 +41,10 @@ dependencies:
   fuzzy: ^0.2.3
   get_it: ^6.0.0-nullsafety
   http: ^0.12.2
+  image_crop_widget: ^0.0.6
+  
+  
+ 
 
 dev_dependencies:
   flutter_test:
@@ -56,11 +62,13 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+  assets:
+    - assets/
 
   fonts: 
   - family: Emoji
     fonts: 
-      - asset: fonts/fallbacks/NotoColorEmoji.ttf 
+      - asset: fonts/fallbacks/AppleColorEmoji.ttf 
 
   # To add assets to your application, add an assets section, like this:
   # assets:
