@@ -284,7 +284,7 @@ class MyHomePage extends HookWidget {
                   textColor: Colors.black,
                   onPressed: () async {
                     final FilePickerResult result = await FilePicker.platform
-                        .pickFiles(type: FileType.image);
+                        .pickFiles(type: FileType.image, withData: true);
                     final Uint8List byteImage = result.files.first.bytes;
 
                     await Navigator.push(

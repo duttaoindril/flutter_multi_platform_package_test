@@ -29,7 +29,6 @@ class _CropImageState extends State<CropImage> {
 
   @override
   Widget build(BuildContext context) {
-    // final ui.Image inputImage =
     return Scaffold(
       body: SafeArea(
         child: FutureBuilder<ui.Image>(
