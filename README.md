@@ -9,53 +9,67 @@ I’m focused on getting us web ready, and of the packages we are using, a few d
 
 I also started looking at null safety, since starting next year it'll be in beta and we can start writing our code to be null safe, so here are the packages, their support status and what I think we should do for each:
 
-|                                                      Package | Web Support | Null Safety Support | Solution                                                     |
-| -----------------------------------------------------------: | :---------: | :-----------------: | :----------------------------------------------------------- |
-|            [Animations](https://pub.dev/packages/animations) |     ✅👌✅     |         🚫🙅🚫         | Wait for null safety support.                                |
-|                      [Async](https://pub.dev/packages/async) |     ✅👌✅     |         ✅👌✅         | N/A                                                          |
-|                    [Badges](https://pub.dev/packages/badges) |     ✅👌✅     |         🚫🙅🚫         | Wait for null safety support.                                |
-| [CachedNetworkImageProvider](https://pub.dev/packages/cached_network_image) |     🚫🙅🚫     |         🚫🙅🚫         | Replace with [FadeInImage.memoryNetwork](https://api.flutter.dev/flutter/widgets/FadeInImage-class.html#FadeInImage.memoryNetwork). Already tested. Works well. |
-|   [CarouselSlider](https://pub.dev/packages/carousel_slider) |     ✅👌✅     |         🚫🙅🚫         | Wait for null safety support. Not very web friendly, should have buttons or something to indicate that it can slide. |
-|            [Characters](https://pub.dev/packages/characters) |     ✅👌✅     |         ✅👌✅         | N/A, but definitely exposed a [bug and it's fix](https://github.com/flutter/flutter/issues/53897#issuecomment-716638453). |
-|     [DevicePreview](https://pub.dev/packages/device_preview) |     ⚠️🤷⚠️     |         🚫🙅🚫         | Wait for null safety support, or just remove it since it's useful but not crucial, and is very buggy on web. |
-|       [FlutterHooks](https://pub.dev/packages/flutter_hooks) |     ✅👌✅     |         🚫🙅🚫         | Wait for null safety support.                                |
-|       [FlutterIcons](https://pub.dev/packages/flutter_icons) |     ✅👌✅     |         🚫🙅🚫         | Wait for null safety support. Small problem - it did not show icons the first time I rendered it, but then it showed it fine. [Might have to try this if it breaks again](https://github.com/flutter/flutter/issues/32540#issuecomment-707900491). If necessary, alternatives can be found. |
-| [FlutterSlideable](https://pub.dev/packages/flutter_slidable) |     ✅👌✅     |         ✅👌✅         | N/A. Not very web friendly, should add buttons or something to indicate that it can slide open. |
-|   [FlutterSpinKit](https://pub.dev/packages/flutter_spinkit) |     ✅👌✅     |         🚫🙅🚫         | Wait for null safety support.                                |
-| [FlutterStripePayment](https://pub.dev/packages/flutter_stripe_payment) |     🚫🙅🚫     |         🚫🙅🚫         | [A bit of a problem](#stripe).                               |
-|           [FlutterSVG](https://pub.dev/packages/flutter_svg) |     ⚠️👌⚠️     |         ✅👌✅         | This one's a bit weird, since it has null safety support but not *official* web support. If we want to opt with Plan A, we could use the [PhotoView](https://pub.dev/packages/photo_view) package, but it doesn't have null safety support. I think the better option would be to opt for Plan B, where I create a [SVG Widget that conditionally uses this package or a different one](https://stackoverflow.com/a/62560528) in Web. [Another example](https://github.com/masewo/flutter_svg_web_example). ***But weirdly enough it just works if I use canvaskit.*** |
-|     [FlutterSwiper](https://pub.dev/packages/flutter_swiper) |     ✅👌✅     |         🚫🙅🚫         | Wait for null safety support.                                |
-| [FlutterTypeAhead](https://pub.dev/packages/flutter_typeahead) |     ⚠️👌⚠️     |         🚫🙅🚫         | Wait for null safety support. Few errors being thrown due to a lack of keyboards in web, and it may have more errors, but it should be fine. |
-| [FontAwesomeFlutter](https://pub.dev/packages/font_awesome_flutter) |     ✅👌✅     |         ✅👌✅         | It's a good package but... we don't need it at all, since [FlutterIcons](https://pub.dev/packages/flutter_icons) has all the icons it does. However that library doesn't have null safety support, and this one does. Still, removing is does increasing loading speed. |
-|                      [Fuzzy](https://pub.dev/packages/fuzzy) |     ✅👌✅     |         🚫🙅🚫         | Wait for null safety support.                                |
-|             [GetIt](https://pub.dev/packages/get_it/install) |     ✅👌✅     |         ✅👌✅         | It's a good package but, we also won't need it, especially after we migrate to Riverpod. |
-|                        [Http](https://pub.dev/packages/http) |     ✅👌✅     |         🚫🙅🚫         | Wait for null safety support.                                |
-|       [ImageCropper](https://pub.dev/packages/image_cropper) |     🚫🙅🚫     |         🚫🙅🚫         | ??? (Chieh)                                                  |
-|         [ImagePicker](https://pub.dev/packages/image_picker) |     🚫🙅🚫     |         🚫🙅🚫         | ??? (Chieh)                                                  |
-|        [Intercom](https://pub.dev/packages/intercom_flutter) |     🚫🙅🚫     |         🚫🙅🚫         | Costs a lot, so we need to decide if we want to keep it or replace it with something else. If we want to keep it, we have to make it work in Flutter Web, which looks like it won't be a good implementation any time soon. If we want to replace it, I want to go with this Flutter compatible one called [Papercups](https://pub.dev/packages/papercups_flutter ). Or we don't have either. Either way, I need to stick in Segment for event tracking for stall points and admin panel data, and I want to use [Storytime](https://github.com/papercups-io/storytime) on Flutter Web. |
-|                        [Intl](https://pub.dev/packages/intl) |     ✅👌✅     |         ✅👌✅         | N/A                                                          |
-|       [LaunchReview](https://pub.dev/packages/launch_review) |     🚫🙅🚫     |         🚫🙅🚫         | I found something a million times better. [InAppReview](https://pub.dev/packages/in_app_review). Web doesn't have a replacement, so I just need to make the whole thing work at minimum to [send feedback to us](https://pub.dev/packages/rating_dialog) for the NPS score in the Admin Panel, and if it's a positive score and not on web it opens the in app review prompt. |
-| [MaskTextInputFormatter](https://pub.dev/packages/mask_text_input_formatter) |     ✅👌✅     |         ✅👌✅         | N/A                                                          |
-|                        [Mime](https://pub.dev/packages/mime) |     ✅👌✅     |         ✅👌✅         | N/A                                                          |
-|   [PageTransition](https://pub.dev/packages/page_transition) |     ✅👌✅     |         ✅👌✅         | N/A                                                          |
-|       [PathProvider](https://pub.dev/packages/path_provider) |     🚫🙅🚫     |         🚫🙅🚫         | Remove, unneeded with Web.                                   |
-| [PermissionHandler](https://pub.dev/packages/permission_handler) |     🚫🙅🚫     |         🚫🙅🚫         | ??? (Chieh)                                                  |
-|             [PhotoView](https://pub.dev/packages/photo_view) |     ✅👌✅     |         🚫🙅🚫         | Wait for null safety support.                                |
-|      [PrettyQRCode](https://pub.dev/packages/pretty_qr_code) |     ✅👌✅     |         🚫🙅🚫         | Wait for null safety support. We can use it if we want to.   |
-|                [Provider](https://pub.dev/packages/provider) |     ✅👌✅     |         ✅👌✅         | Replace with [Riverpod](https://pub.dev/packages/hooks_riverpod) after [null-safe](https://github.com/rrousselGit/river_pod/issues/220) |
-|                    [Recase](https://pub.dev/packages/recase) |     ✅👌✅     |         ✅👌✅         | N/A                                                          |
-| [ReceiveSharingIntent](https://pub.dev/packages/receive_sharing_intent) |     🚫🙅🚫     |         🚫🙅🚫         | ??? (Chieh)                                                  |
-|                    [RxDart](https://pub.dev/packages/rxdart) |     ✅👌✅     |         ✅👌✅         | N/A                                                          |
-|                      [Share](https://pub.dev/packages/share) |     🚫🙅🚫     |         ✅👌✅         | ??? (Chieh) Either Plan A: Replace with [SharePlus](https://pub.dev/packages/share_plus) or go with Plan B. |
-|         [ShareExtend](https://pub.dev/packages/share_extend) |     🚫🙅🚫     |         🚫🙅🚫         | ??? (Chieh)                                                  |
-| [SharedPreferences](https://pub.dev/packages/shared_preferences) |     ✅👌✅     |         🚫🙅🚫         | Wait for null safety support.                                |
-| [SimpleAnimations](https://pub.dev/packages/simple_animations) |     ✅👌✅     |         ✅👌✅         | N/A                                                          |
-|     [StripePayment](https://pub.dev/packages/stripe_payment) |     🚫🙅🚫     |         🚫🙅🚫         | There's no reliable stripe packages for mobile and web, so we need to make a full in house replacement. The good news is that the only two features the package provided was entering credit cards and verifying some specific card transactions, which will take a bit, but is possible, I think. |
-|       [TimelineTile](https://pub.dev/packages/timeline_tile) |     ✅👌✅     |         🚫🙅🚫         | Wait for null safety support.                                |
-|                      [Tuple](https://pub.dev/packages/tuple) |     ✅👌✅     |         ✅👌✅         | N/A                                                          |
-|         [UrlLauncher](https://pub.dev/packages/url_launcher) |     ✅👌✅     |         ✅👌✅         | N/A                                                          |
-|              [Vibration](https://pub.dev/packages/vibration) |     ✅👌✅     |         ✅👌✅         | N/A                                                          |
-|   [WebViewFlutter](https://pub.dev/packages/webview_flutter) |     🚫🙅🚫     |         ✅👌✅         | Since web apps don't have web view, because, it is the web, I need to find a [hack](#FlutterWebview) to show websites in the website. Going to be a problem, especially with CSR and CORS. Maybe have to solve with tabs using a dynamic import. |
+## Packages
+
+|                                                      Package | Web Support | Null Safety Support | HTML? | Canvas? | Solution                                                     |
+| -----------------------------------------------------------: | :---------: | :-----------------: | :---: | :-----: | :----------------------------------------------------------- |
+|            [Animations](https://pub.dev/packages/animations) |     ✅👌✅     |         🚫🙅🚫         |       |         | Wait for null safety support.                                |
+|                      [Async](https://pub.dev/packages/async) |     ✅👌✅     |         ✅👌✅         |       |         | N/A                                                          |
+|                    [Badges](https://pub.dev/packages/badges) |     ✅👌✅     |         🚫🙅🚫         |       |         | Wait for null safety support.                                |
+|        [CNIP](https://pub.dev/packages/cached_network_image) |     🚫🙅🚫     |         🚫🙅🚫         |       |         | Replace with [FadeInImage.memoryNetwork](https://api.flutter.dev/flutter/widgets/FadeInImage-class.html#FadeInImage.memoryNetwork). Already tested. Works well. |
+|   [CarouselSlider](https://pub.dev/packages/carousel_slider) |     ✅👌✅     |         🚫🙅🚫         |       |         | Wait for null safety support. Not very web friendly, should have buttons or something to indicate that it can slide. |
+|            [Characters](https://pub.dev/packages/characters) |     ✅👌✅     |         ✅👌✅         |       |         | N/A, but definitely exposed a [bug and it's fix](https://github.com/flutter/flutter/issues/53897#issuecomment-716638453). |
+|     [DevicePreview](https://pub.dev/packages/device_preview) |     ⚠️🤷⚠️     |         🚫🙅🚫         |       |         | Wait for null safety support, or just remove it since it's useful but not crucial, and is very buggy on web. |
+|       [FlutterHooks](https://pub.dev/packages/flutter_hooks) |     ✅👌✅     |         🚫🙅🚫         |       |         | Wait for null safety support.                                |
+|       [FlutterIcons](https://pub.dev/packages/flutter_icons) |     ✅👌✅     |         🚫🙅🚫         |       |         | Wait for null safety support. Small problem - it did not show icons the first time I rendered it, but then it showed it fine. [Might have to try this if it breaks again](https://github.com/flutter/flutter/issues/32540#issuecomment-707900491). If necessary, alternatives can be found. |
+| [FlutterSlideable](https://pub.dev/packages/flutter_slidable) |     ✅👌✅     |         ✅👌✅         |       |         | N/A. Not very web friendly, should add buttons or something to indicate that it can slide open. |
+|   [FlutterSpinKit](https://pub.dev/packages/flutter_spinkit) |     ✅👌✅     |         🚫🙅🚫         |       |         | Wait for null safety support.                                |
+| [FlutterStripePayment](https://pub.dev/packages/flutter_stripe_payment) |     🚫🙅🚫     |         🚫🙅🚫         |       |         | [A bit of a problem](#stripe).                               |
+|           [FlutterSVG](https://pub.dev/packages/flutter_svg) |     ⚠️👌⚠️     |         ✅👌✅         |       |         | This one's a bit weird, since it has null safety support but not *official* web support. If we want to opt with Plan A, we could use the [PhotoView](https://pub.dev/packages/photo_view) package, but it doesn't have null safety support. I think the better option would be to opt for Plan B, where I create a [SVG Widget that conditionally uses this package or a different one](https://stackoverflow.com/a/62560528) in Web. [Another example](https://github.com/masewo/flutter_svg_web_example). ***But weirdly enough it just works if I use canvaskit.*** |
+|     [FlutterSwiper](https://pub.dev/packages/flutter_swiper) |     ✅👌✅     |         🚫🙅🚫         |       |         | Wait for null safety support.                                |
+| [FlutterTypeAhead](https://pub.dev/packages/flutter_typeahead) |     ⚠️👌⚠️     |         🚫🙅🚫         |       |         | Wait for null safety support. Few errors being thrown due to a lack of keyboards in web, and it may have more errors, but it should be fine. |
+| [FontAwesomeFlutter](https://pub.dev/packages/font_awesome_flutter) |     ✅👌✅     |         ✅👌✅         |       |         | It's a good package but... we don't need it at all, since [FlutterIcons](https://pub.dev/packages/flutter_icons) has all the icons it does. However that library doesn't have null safety support, and this one does. Still, removing is does increasing loading speed. |
+|                      [Fuzzy](https://pub.dev/packages/fuzzy) |     ✅👌✅     |         🚫🙅🚫         |       |         | Wait for null safety support.                                |
+|             [GetIt](https://pub.dev/packages/get_it/install) |     ✅👌✅     |         ✅👌✅         |       |         | It's a good package but, we also won't need it, especially after we migrate to Riverpod. |
+|                        [Http](https://pub.dev/packages/http) |     ✅👌✅     |         🚫🙅🚫         |       |         | Wait for null safety support.                                |
+|       [ImageCropper](https://pub.dev/packages/image_cropper) |     🚫🙅🚫     |         🚫🙅🚫         |       |         | ??? (Chieh)                                                  |
+|         [ImagePicker](https://pub.dev/packages/image_picker) |     🚫🙅🚫     |         🚫🙅🚫         |       |         | ??? (Chieh)                                                  |
+|        [Intercom](https://pub.dev/packages/intercom_flutter) |     🚫🙅🚫     |         🚫🙅🚫         |       |         | Costs a lot, so we need to decide if we want to keep it or replace it with something else. If we want to keep it, we have to make it work in Flutter Web, which looks like it won't be a good implementation any time soon. If we want to replace it, I want to go with this Flutter compatible one called [Papercups](https://pub.dev/packages/papercups_flutter ). Or we don't have either. Either way, I need to stick in Segment for event tracking for stall points and admin panel data, and I want to use [Storytime](https://github.com/papercups-io/storytime) on Flutter Web. |
+|                        [Intl](https://pub.dev/packages/intl) |     ✅👌✅     |         ✅👌✅         |       |         | N/A                                                          |
+|       [LaunchReview](https://pub.dev/packages/launch_review) |     🚫🙅🚫     |         🚫🙅🚫         |       |         | I found something a million times better. [InAppReview](https://pub.dev/packages/in_app_review). Web doesn't have a replacement, so I just need to make the whole thing work at minimum to [send feedback to us](https://pub.dev/packages/rating_dialog) for the NPS score in the Admin Panel, and if it's a positive score and not on web it opens the in app review prompt. |
+|   [MTIF](https://pub.dev/packages/mask_text_input_formatter) |     ✅👌✅     |         ✅👌✅         |       |         | N/A                                                          |
+|                        [Mime](https://pub.dev/packages/mime) |     ✅👌✅     |         ✅👌✅         |       |         | N/A                                                          |
+|   [PageTransition](https://pub.dev/packages/page_transition) |     ✅👌✅     |         ✅👌✅         |       |         | N/A                                                          |
+|       [PathProvider](https://pub.dev/packages/path_provider) |     🚫🙅🚫     |         🚫🙅🚫         |       |         | Remove, unneeded with Web.                                   |
+| [PermissionHandler](https://pub.dev/packages/permission_handler) |     🚫🙅🚫     |         🚫🙅🚫         |       |         | ??? (Chieh)                                                  |
+|             [PhotoView](https://pub.dev/packages/photo_view) |     ✅👌✅     |         🚫🙅🚫         |       |         | Wait for null safety support.                                |
+|      [PrettyQRCode](https://pub.dev/packages/pretty_qr_code) |     ✅👌✅     |         🚫🙅🚫         |       |         | Wait for null safety support. We can use it if we want to.   |
+|                [Provider](https://pub.dev/packages/provider) |     ✅👌✅     |         ✅👌✅         |       |         | Replace with [Riverpod](https://pub.dev/packages/hooks_riverpod) after [null-safe](https://github.com/rrousselGit/river_pod/issues/220) |
+|                    [Recase](https://pub.dev/packages/recase) |     ✅👌✅     |         ✅👌✅         |       |         | N/A                                                          |
+| [ReceiveSharingIntent](https://pub.dev/packages/receive_sharing_intent) |     🚫🙅🚫     |         🚫🙅🚫         |       |         | ??? (Chieh)                                                  |
+|                    [RxDart](https://pub.dev/packages/rxdart) |     ✅👌✅     |         ✅👌✅         |       |         | N/A                                                          |
+|                      [Share](https://pub.dev/packages/share) |     🚫🙅🚫     |         ✅👌✅         |       |         | ??? (Chieh) Either Plan A: Replace with [SharePlus](https://pub.dev/packages/share_plus) or go with Plan B. |
+|         [ShareExtend](https://pub.dev/packages/share_extend) |     🚫🙅🚫     |         🚫🙅🚫         |       |         | ??? (Chieh)                                                  |
+| [SharedPreferences](https://pub.dev/packages/shared_preferences) |     ✅👌✅     |         🚫🙅🚫         |       |         | Wait for null safety support.                                |
+| [SimpleAnimations](https://pub.dev/packages/simple_animations) |     ✅👌✅     |         ✅👌✅         |       |         | N/A                                                          |
+|     [StripePayment](https://pub.dev/packages/stripe_payment) |     🚫🙅🚫     |         🚫🙅🚫         |       |         | There's no reliable stripe packages for mobile and web, so we need to make a full in house replacement. The good news is that the only two features the package provided was entering credit cards and verifying some specific card transactions, which will take a bit, but is possible, I think. |
+|       [TimelineTile](https://pub.dev/packages/timeline_tile) |     ✅👌✅     |         🚫🙅🚫         |       |         | Wait for null safety support.                                |
+|                      [Tuple](https://pub.dev/packages/tuple) |     ✅👌✅     |         ✅👌✅         |       |         | N/A                                                          |
+|         [UrlLauncher](https://pub.dev/packages/url_launcher) |     ✅👌✅     |         ✅👌✅         |       |         | N/A                                                          |
+|              [Vibration](https://pub.dev/packages/vibration) |     ✅👌✅     |         ✅👌✅         |       |         | N/A                                                          |
+|   [WebViewFlutter](https://pub.dev/packages/webview_flutter) |     🚫🙅🚫     |         ✅👌✅         |       |         | Since web apps don't have web view, because, it is the web, I need to find a [hack](#FlutterWebview) to show websites in the website. Going to be a problem, especially with CSR and CORS. Maybe have to solve with tabs using a dynamic import. |
+
+## Decide between Canvas or HTML: Features
+
+Find all the pros and cons for each of the below, and figure out what works and what doesn't on HTML and Canvas, and fill out the `HTML? | Canvas?` column, so make sure to try everything on both; things to look out for:
+
+|                                         Feature | HTML? | Canvas? | Solution & Notes |
+| ----------------------------------------------: | :---: | :-----: | ---------------- |
+|                                          Emojis |       |         |                  |
+|                                           Fonts |       |         |                  |
+| [SVGs]( https://github.com/dnfield/flutter_svg) |       |         |                  |
+|                                          Images |       |         |                  |
+|                                         Caching |       |         |                  |
 
 ## Chieh
 
@@ -65,39 +79,29 @@ I also started looking at null safety, since starting next year it'll be in beta
 - Figure out [Share](https://pub.dev/packages/share) and [ShareExtend](https://pub.dev/packages/share_extend) - Figure out if there's a web alternative, if there is get it to work on all 3, if it doesn't make a dynamic import and ignore it on web
 - See if it's possible to have Firebase packages that aren't web ready in the code base being used in non web platforms; maybe they'll need a dynamic import with noop web mirror functions
 - Help test more things and help [Decide between Canvas or HTML](#decidebetweencanvasorhtml)
+  - Test every `Feature` in the table
+  - Test [Intl](https://pub.dev/packages/intl) works on web, is it better on canvas or html?
+  - Test [MaskTextInputFormatter](https://pub.dev/packages/mask_text_input_formatter) works on web, is it better on canvas or html?
+  - Test [PageTransition](https://pub.dev/packages/page_transition) works on web, is it better on canvas or html?
+  - Test [PhotoView](https://pub.dev/packages/photo_view) works on web, is it better on canvas or html?
+  - Test [PrettyQRCode](https://pub.dev/packages/pretty_qr_code) works on web, is it better on canvas or html?
+  - Test [Provider](https://pub.dev/packages/provider) works on web, is it better on canvas or html?
+  - Test [Recase](https://pub.dev/packages/recase) works on web, is it better on canvas or html?
+  - Test [RxDart](https://pub.dev/packages/rxdart) works on web, is it better on canvas or html?
+  - Test [SharedPreferences](https://pub.dev/packages/shared_preferences) works on web, is it better on canvas or html?
+  - Test [SimpleAnimations](https://pub.dev/packages/simple_animations) works on web, is it better on canvas or html?
+  - Test [TimelineTile](https://pub.dev/packages/timeline_tile) works on web, is it better on canvas or html?
+  - Test [Tuple](https://pub.dev/packages/tuple) works on web, is it better on canvas or html?
+  - Test [UrlLauncher](https://pub.dev/packages/url_launcher) works on web, is it better on canvas or html?
+  - Test [Vibration](https://pub.dev/packages/vibration) works on web, is it better on canvas or html?
+- `flutter create --description "Flutter Multi Platform Package Test" --org "com.multiplatform.test" --project-name "flutter_multi_platform_package_test" -t app .`
 
 ## Oindril
 
-- Need to figure out [StripePayment](https://pub.dev/packages/stripe_payment) - There's no reliable stripe packages for mobile and web, so we need to make a full in house replacement. The good news is that the only two features the package provided was entering credit cards and verifying some specific card transactions, which will take a bit, but is possible, I think 
+- Need to figure out [FlutterStripePayment](https://pub.dev/packages/flutter_stripe_payment) and [StripePayment](https://pub.dev/packages/stripe_payment) - There's no reliable stripe packages for mobile and web, so we need to make a full in house replacement. The good news is that the only two features the package provided was entering credit cards and verifying some specific card transactions, which will take a bit, but is possible, I think 
 - Need to figure out [WebViewFlutter](https://pub.dev/packages/webview_flutter) - Since web apps don't have web view, because, it is the web, I need to find a hack to show websites in the website. Going to be a problem, especially with CSR and CORS. Maybe have to solve with tabs using a dynamic import.
 - Need to figure out [LaunchReview](https://pub.dev/packages/launch_review) - I found a million times better thing. In app review. Web doesn't have a replacement, so I just need to make the whole thing work with at minimum to send feedback to us for an NPS score in the Admin Panel, and if it's a positive score and not on web it opens the in app review prompt.
 - Need to figure out [Intercom](https://pub.dev/packages/intercom_flutter) - it costs a lot, so need to decide with Andrew if we keep it or replace it with something else. If we want to keep it, we have to make it work in Flutter, if we want to replace it, I want to go with this Flutter compatible one called Papercups. Or we don't have either. Either way, I need to stick in Segment for event tracking for stall points and admin panel data.
-
-## Decide between Canvas or HTML
-
-`flutter create --description "Flutter Multi Platform Package Test" --org "com.multiplatform.test" --project-name "flutter_multi_platform_package_test" -t app .`
-
-Find all the pros and cons between them, what works and what doesn't, things to look out for:
-
-- Emojis
-- Fonts
-- Images (cached?)
-- SVG (cached?) - https://github.com/dnfield/flutter_svg
-- How do Graphical Packages look
-- Test [Intl](https://pub.dev/packages/intl) works on web, is it better on canvas or html?
-- Test [MaskTextInputFormatter](https://pub.dev/packages/mask_text_input_formatter) works on web, is it better on canvas or html?
-- Test [PageTransition](https://pub.dev/packages/page_transition) works on web, is it better on canvas or html?
-- Test [PhotoView](https://pub.dev/packages/photo_view) works on web, is it better on canvas or html?
-- Test [PrettyQRCode](https://pub.dev/packages/pretty_qr_code) works on web, is it better on canvas or html?
-- Test [Provider](https://pub.dev/packages/provider) works on web, is it better on canvas or html?
-- Test [Recase](https://pub.dev/packages/recase) works on web, is it better on canvas or html?
-- Test [RxDart](https://pub.dev/packages/rxdart) works on web, is it better on canvas or html?
-- Test [SharedPreferences](https://pub.dev/packages/shared_preferences) works on web, is it better on canvas or html?
-- Test [SimpleAnimations](https://pub.dev/packages/simple_animations) works on web, is it better on canvas or html?
-- Test [TimelineTile](https://pub.dev/packages/timeline_tile) works on web, is it better on canvas or html?
-- Test [Tuple](https://pub.dev/packages/tuple) works on web, is it better on canvas or html?
-- Test [UrlLauncher](https://pub.dev/packages/url_launcher) works on web, is it better on canvas or html?
-- Test [Vibration](https://pub.dev/packages/vibration) works on web, is it better on canvas or html?
 
 ## Firebase Problems
 
