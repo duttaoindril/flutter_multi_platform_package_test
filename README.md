@@ -141,6 +141,10 @@ Find all the pros and cons for each of the below, and figure out what works and 
 - Replace feedback dialog with
   - https://pub.dev/packages/rating_dialog -> sends data to us
   - good reviews go to -> https://pub.dev/packages/in_app_review
+  - Add better loading screens with https://pub.dev/packages/shimmer
+- Add video support
+  - https://pub.dev/packages/video_player
+  - https://pub.dev/packages/chewie
 
 ## Stripe Problems
 
