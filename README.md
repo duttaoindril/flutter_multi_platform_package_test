@@ -98,14 +98,10 @@ Find all the pros and cons for each of the below, and figure out what works and 
 
 ## Oindril
 
-- Need to figure out [FlutterStripePayment](https://pub.dev/packages/flutter_stripe_payment) and [StripePayment](https://pub.dev/packages/stripe_payment) - There's no reliable stripe packages for mobile and web, so we need to make a full in house replacement. The good news is that the only two features the package provided was entering credit cards and verifying some specific card transactions, which will take a bit, but is possible, I think 
+- Need to figure out [FlutterStripePayment](https://pub.dev/packages/flutter_stripe_payment) and [StripePayment](https://pub.dev/packages/stripe_payment) - There's no reliable stripe packages for mobile and web, so we need to make a full in house replacement. The good news is that the only two features the package provided was entering credit cards and verifying some specific card transactions, which will take a bit, but is possible, I think.
 - Need to figure out [WebViewFlutter](https://pub.dev/packages/webview_flutter) - Since web apps don't have web view, because, it is the web, I need to find a hack to show websites in the website. Going to be a problem, especially with CSR and CORS. Maybe have to solve with tabs using a dynamic import.
 - Need to figure out [LaunchReview](https://pub.dev/packages/launch_review) - I found a million times better thing. In app review. Web doesn't have a replacement, so I just need to make the whole thing work with at minimum to send feedback to us for an NPS score in the Admin Panel, and if it's a positive score and not on web it opens the in app review prompt.
 - Need to figure out [Intercom](https://pub.dev/packages/intercom_flutter) - it costs a lot, so need to decide with Andrew if we keep it or replace it with something else. If we want to keep it, we have to make it work in Flutter, if we want to replace it, I want to go with this Flutter compatible one called Papercups. Or we don't have either. Either way, I need to stick in Segment for event tracking for stall points and admin panel data.
-
-## Firebase Problems
-
-If we want to opt into Plan A, the only stripe package that supports Web is [Stripe API](https://pub.dev/packages/stripe_api). It doesn't have null safety, and worst case I can copy it's source code as needed.
 
 ## Improvements
 
@@ -213,9 +209,8 @@ Image Cropper
 
 Flutter Web Samples:
 
-- 
-  - https://gallery.codelessly.com/flutterwebsites/flutterwebsite
-  - https://gallery.codelessly.com/flutterwebsites/minimal
+- https://gallery.codelessly.com/flutterwebsites/flutterwebsite
+- https://gallery.codelessly.com/flutterwebsites/minimal
 
 Null Safety:
 
