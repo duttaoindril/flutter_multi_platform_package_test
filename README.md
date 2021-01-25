@@ -19,6 +19,8 @@ At this point, we should have 6 branches:
 - `simple`: New app where we will start to port code from `stable web`. (Going to builds for beta testing)
 - `simple-dev`: The currently in development branch for the new simple app. (Can only be channel `beta`)
 
+Dependency Tree: `master` <- `stable`, `development` <- `stable-web`, `simple` <- `simple-dev`
+
 Once we are at the point, we can start trying to get users from the `simple` branch, and once we get users, we will push to `master` and remove the old build cycle, but to even get to that point, we have to finish Plan Step #2, we have to get web ready! I’m focused on getting us web ready, and of the packages we are using, a few don’t support web. I don’t know how we’re going to actually deal with this across the board, but a few ideas are:
 
 1. Option A: Replace the package with an alternative that supports web.
