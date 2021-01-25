@@ -21,10 +21,10 @@ At this point, we should have 6 branches:
 
 Once we are at the point, we can start trying to get users from the `simple` branch, and once we get users, we will push to `master` and remove the old build cycle, but to even get to that point, we have to finish Plan Step #2, we have to get web ready! I’m focused on getting us web ready, and of the packages we are using, a few don’t support web. I don’t know how we’re going to actually deal with this across the board, but a few ideas are:
 
-1. Plan A: Replace the package with an alternative that supports web.
-2. Plan B: Use conditional widgets or replacement imports - https://stackoverflow.com/a/60152950.
-3. Plan C: Remove the package altogether and make our own alternative or pull in the code and customize it.
-4. Plan D: Just wait for the package to support web.
+1. Option A: Replace the package with an alternative that supports web.
+2. Option B: Use conditional widgets or replacement imports - https://stackoverflow.com/a/60152950.
+3. Option C: Remove the package altogether and make our own alternative or pull in the code and customize it.
+4. Option D: Just wait for the package to support web.
 
 I also started looking at null safety, since starting next year it'll be in beta and we can start writing our code to be null safe, so here are the packages, their support status and what I think we should do for each:
 
