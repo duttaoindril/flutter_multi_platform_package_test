@@ -1,6 +1,25 @@
 # Flutter Multi Platform Package Test
 
-I’m focused on getting us web ready, and of the packages we are using, a few don’t support web. I don’t know how we’re going to actually deal with this, but a few ideas are:
+## Plan
+
+1. Clean up all existing branches of the app, condense into one main one, and push a release to `master` 0.2.3
+2. Get the current app “web-safe” on a new branch `web` 
+   - Migrate packages
+   - Null safety
+   - Have web and mobile versions working
+3. Once we're happy with `web` working well on all platforms, merge into `development`, but not `master`, and save `web` to `stable-web` as an archive of the old web ready app.
+4. Start the new radically `simple`, and `simple-dev` branch version of the app based off of the `development` branch from which we will pull in code from `stable-web`
+
+At this point, we should have 6 branches:
+
+- `master`: Release, Production. (Going to Users, ideally prefer channel `stable`, but will have to use `beta` later)
+- `development`: The currently in development branch, used for testing. (Can be either in channel `beta` or `stable`)
+- `stable`: Old stable app as an archive. (Can only be channel `stable`)
+- `stable-web`: Old stable app that is web compatible as an archive. (Can only be channel `beta`)
+- `simple`: New app where we will start to port code from `stable web`. (Going to builds for beta testing)
+- `simple-dev`: The currently in development branch for the new simple app. (Can only be channel `beta`)
+
+Once we are at the point, we can start trying to get users from the `simple` branch, and once we get users, we will push to `master` and remove the old build cycle, but to even get to that point, we have to finish Plan Step #2, we have to get web ready! I’m focused on getting us web ready, and of the packages we are using, a few don’t support web. I don’t know how we’re going to actually deal with this across the board, but a few ideas are:
 
 1. Plan A: Replace the package with an alternative that supports web.
 2. Plan B: Use conditional widgets or replacement imports - https://stackoverflow.com/a/60152950.
