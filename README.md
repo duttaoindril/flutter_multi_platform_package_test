@@ -7,7 +7,7 @@
    - Migrate packages to be web and null safe
    - Add null safety to the code base
    - Have web and android and iOS versions working
-3. Once we're happy with `web` working well on all platforms, merge into `development`, but not `master`, and save `web` to `stable-web` as an archive of the old web ready app.
+3. Once we're happy with `web` working well on all platforms, merge into `development`, but not `master`, and save the new web and null safe ready `development`  branch to `stable-web` as an archive of the old web ready app.
 4. Start the new radically `simple`, and `simple-dev` branch version of the app based off of the `development` branch from which we will pull in code from `stable-web`
 
 At this point, we should have 6 branches:
