@@ -1,12 +1,12 @@
 # Flutter Multi Platform Package Test
 
-## Plan
+## ***The Plan* ™**
 
-1. Clean up all existing branches of the app, condense into one main one, and push a release to `master` 0.2.3
+1. ~~Clean up all existing branches of the app, condense into one main one, and push a release to `master` 0.2.3~~
 2. Get the current app “web-safe” on a new branch `web` 
-   - Migrate packages
-   - Null safety
-   - Have web and mobile versions working
+   - Migrate packages to be web and null safe
+   - Add null safety to the code base
+   - Have web and android and iOS versions working
 3. Once we're happy with `web` working well on all platforms, merge into `development`, but not `master`, and save `web` to `stable-web` as an archive of the old web ready app.
 4. Start the new radically `simple`, and `simple-dev` branch version of the app based off of the `development` branch from which we will pull in code from `stable-web`
 
