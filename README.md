@@ -98,6 +98,7 @@ Find all the pros and cons for each of the below, and figure out what works and 
 - Figure out [PermissionHandler](https://pub.dev/packages/permission_handler) - I think you pulled in this package
 - Figure out [ReceiveSharingIntent](https://pub.dev/packages/receive_sharing_intent) - I don't think this exists on web at all, so all we have to do is make sure the feature works on android and ios and is ignored on web, probably a dynamic import
 - Figure out [Share](https://pub.dev/packages/share) and [ShareExtend](https://pub.dev/packages/share_extend) - Figure out if there's a web alternative, if there is get it to work on all 3, if it doesn't make a dynamic import and ignore it on web
+- Need to figure out [WebViewFlutter](https://pub.dev/packages/webview_flutter) - Since web apps don't have web view, because, it is the web, I need to find a hack to show websites in the website. Going to be a problem, especially with CSR and CORS. Maybe have to solve with tabs using a dynamic import.
 - See if it's possible to have Firebase packages that aren't web ready in the code base being used in non web platforms; maybe they'll need a dynamic import with noop web mirror functions
 - Help test more things and help [Decide between Canvas or HTML](#decidebetweencanvasorhtml)
   - Test every `Feature` in the table
@@ -120,7 +121,6 @@ Find all the pros and cons for each of the below, and figure out what works and 
 ## Oindril
 
 - Need to figure out [FlutterStripePayment](https://pub.dev/packages/flutter_stripe_payment) and [StripePayment](https://pub.dev/packages/stripe_payment) - There's no reliable stripe packages for mobile and web, so we need to make a full in house replacement. The good news is that the only two features the package provided was entering credit cards and verifying some specific card transactions, which will take a bit, but is possible, I think.
-- Need to figure out [WebViewFlutter](https://pub.dev/packages/webview_flutter) - Since web apps don't have web view, because, it is the web, I need to find a hack to show websites in the website. Going to be a problem, especially with CSR and CORS. Maybe have to solve with tabs using a dynamic import.
 - Need to figure out [LaunchReview](https://pub.dev/packages/launch_review) - I found a million times better thing. In app review. Web doesn't have a replacement, so I just need to make the whole thing work with at minimum to send feedback to us for an NPS score in the Admin Panel, and if it's a positive score and not on web it opens the in app review prompt.
 - Need to figure out [Intercom](https://pub.dev/packages/intercom_flutter) - it costs a lot, so need to decide with Andrew if we keep it or replace it with something else. If we want to keep it, we have to make it work in Flutter, if we want to replace it, I want to go with this Flutter compatible one called Papercups. Or we don't have either. Either way, I need to stick in Segment for event tracking for stall points and admin panel data.
 
@@ -249,3 +249,10 @@ Null Safety:
 Future:
 
 - https://pub.dev/packages/i18n_extension
+
+# SIMPLIFY:
+
+## MINIMIZE PLATFORM SPECIFIC CODE!!!!
+
+## MINIMIZE PACKAGES!!!!
+
