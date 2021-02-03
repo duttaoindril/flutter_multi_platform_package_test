@@ -141,6 +141,8 @@ import 'package:fuzzy/fuzzy.dart';
 import 'package:get_it/get_it.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_multi_platform_package_test/web/index.dart';
+import 'package:flutter_multi_platform_package_test/helpers/image_crop/index.dart';
+import 'package:flutter_multi_platform_package_test/helpers/image_picker/index.dart';
 
 const String hi = 'Hi ⏰';
 
@@ -283,29 +285,35 @@ class MyHomePage extends HookWidget {
                 RaisedButton(
                   textColor: Colors.black,
                   onPressed: () async {
-                    final FilePickerResult result = await FilePicker.platform
-                        .pickFiles(type: FileType.image, withData: true);
-                    final Uint8List byteImage = result.files.first.bytes;
+                    // final FilePickerResult result = await FilePicker.platform
+                    //     .pickFiles(type: FileType.image, withData: true);
+                    // final Uint8List byteImage = result.files.first.bytes;
 
-                    await Navigator.push(
-                      context,
-                      MaterialPageRoute<Widget>(
-                        builder: (BuildContext context) {
-                          return CropImage(
-                            inputByteImage: byteImage,
-                            onPress: (ui.Image croppedImage) {
-                              showModalBottomSheet<RawImage>(
-                                  context: context,
-                                  builder: (BuildContext context) => RawImage(
-                                        image: croppedImage,
-                                        fit: BoxFit.contain,
-                                        height: croppedImage.height.toDouble(),
-                                      ));
-                            },
-                          );
-                        },
-                      ),
-                    );
+                    // await Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute<Widget>(
+                    //     builder: (BuildContext context) {
+                    //       return CropImage(
+                    //         inputByteImage: byteImage,
+                    //         onPress: (ui.Image croppedImage) {
+                    //           showModalBottomSheet<RawImage>(
+                    //               context: context,
+                    //               builder: (BuildContext context) => RawImage(
+                    //                     image: croppedImage,
+                    //                     fit: BoxFit.contain,
+                    //                     height: croppedImage.height.toDouble(),
+                    //                   ));
+                    //         },
+                    //       );
+                    //     },
+                    //   ),
+                    // );
+
+                    final Uint8List inputImage = await getImage();
+                    final Uint8List croppedImage = await cropImage(inputImage,
+                        context: context, maxWidth: 240, maxHeight: 240);
+
+                    Image.memory(croppedImage);
                   },
                   child: const Text('Get Pic'),
                 ),
