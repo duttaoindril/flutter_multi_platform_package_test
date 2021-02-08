@@ -130,6 +130,8 @@ Find all the pros and cons for each of the below, and figure out what works and 
   - https://papercups.io | https://app.papercups.io/account/overview | https://pub.dev/packages/papercups_flutter | https://github.com/papercups-io/storytime | https://pub.dev/packages/feedback
 - Migrate from Provider to Riverpod
   - https://riverpod.dev
+  - https://gist.github.com/c117544b0cd278f421c8b243546379f5
+  - https://link.medium.com/uoKFJ1MB4cb
 - Find a better way to have document models, use generics or packages
   - Use Mixins, Abstract and Interface Classes https://dart.dev/samples#interfaces-and-abstract-classes
   - Figure out how to have all code be generated and available instead of manually done, based on types stringified
