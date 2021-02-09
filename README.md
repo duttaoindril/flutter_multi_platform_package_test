@@ -34,7 +34,7 @@ I also started looking at null safety, since starting next year it'll be in beta
 
 |                                                      Package | Web Support | Null Safety Support | HTML? | Canvas? | Solution                                                     |
 | -----------------------------------------------------------: | :---------: | :-----------------: | :---: | :-----: | :----------------------------------------------------------- |
-|            [Animations](https://pub.dev/packages/animations) |     ✅👌✅     |         🚫🙅🚫         |       |         | Wait for null safety support.                                |
+|            [Animations](https://pub.dev/packages/animations) |     ✅👌✅     |         🚫🙅🚫         |   ✅   |    ✅    | Wait for null safety support.                                |
 |                      [Async](https://pub.dev/packages/async) |     ✅👌✅     |         ✅👌✅         |       |         | N/A                                                          |
 |                    [Badges](https://pub.dev/packages/badges) |     ✅👌✅     |         🚫🙅🚫         |       |         | Wait for null safety support.                                |
 |        [CNIP](https://pub.dev/packages/cached_network_image) |     ⚠️🤷⚠️     |         🚫🙅🚫         |       |         | Wait for null safety support, or replace with [FadeInImage.memoryNetwork](https://api.flutter.dev/flutter/widgets/FadeInImage-class.html#FadeInImage.memoryNetwork). |
@@ -65,19 +65,19 @@ I also started looking at null safety, since starting next year it'll be in beta
 | [PermissionHandler](https://pub.dev/packages/permission_handler) |     🚫🙅🚫     |         🚫🙅🚫         |       |         | ??? (Chieh)                                                  |
 |             [PhotoView](https://pub.dev/packages/photo_view) |     ✅👌✅     |         🚫🙅🚫         |       |         | Wait for null safety support.                                |
 |      [PrettyQRCode](https://pub.dev/packages/pretty_qr_code) |     ✅👌✅     |         🚫🙅🚫         |       |         | Wait for null safety support. We can use it if we want to.   |
-|                [Provider](https://pub.dev/packages/provider) |     ✅👌✅     |         ✅👌✅         |       |         | Replace with [Riverpod](https://pub.dev/packages/hooks_riverpod) after [null-safe](https://github.com/rrousselGit/river_pod/issues/220) |
-|                    [Recase](https://pub.dev/packages/recase) |     ✅👌✅     |         ✅👌✅         |       |         | N/A                                                          |
+|                [Provider](https://pub.dev/packages/provider) |     ✅👌✅     |         ✅👌✅         |   ✅   |    ✅    | Replace with [Riverpod](https://pub.dev/packages/hooks_riverpod) after [null-safe](https://github.com/rrousselGit/river_pod/issues/220) |
+|                    [Recase](https://pub.dev/packages/recase) |     ✅👌✅     |         ✅👌✅         |   ✅   |    ✅    | N/A                                                          |
 | [ReceiveSharingIntent](https://pub.dev/packages/receive_sharing_intent) |     🚫🙅🚫     |         🚫🙅🚫         |       |         | ??? (Chieh)                                                  |
-|                    [RxDart](https://pub.dev/packages/rxdart) |     ✅👌✅     |         ✅👌✅         |       |         | N/A                                                          |
+|                    [RxDart](https://pub.dev/packages/rxdart) |     ✅👌✅     |         ✅👌✅         |   ✅   |    ✅    | N/A                                                          |
 |                      [Share](https://pub.dev/packages/share) |     🚫🙅🚫     |         ✅👌✅         |       |         | ??? (Chieh) Either Plan A: Replace with [SharePlus](https://pub.dev/packages/share_plus) or go with Plan B. |
 |         [ShareExtend](https://pub.dev/packages/share_extend) |     🚫🙅🚫     |         🚫🙅🚫         |       |         | ??? (Chieh)                                                  |
-| [SharedPreferences](https://pub.dev/packages/shared_preferences) |     ✅👌✅     |         🚫🙅🚫         |       |         | Wait for null safety support.                                |
-| [SimpleAnimations](https://pub.dev/packages/simple_animations) |     ✅👌✅     |         ✅👌✅         |       |         | N/A                                                          |
+| [SharedPreferences](https://pub.dev/packages/shared_preferences) |     ✅👌✅     |         🚫🙅🚫         |   ✅   |    ✅    | Wait for null safety support.                                |
+| [SimpleAnimations](https://pub.dev/packages/simple_animations) |     ✅👌✅     |         ✅👌✅         |   ✅   |    ✅    | N/A                                                          |
 |     [StripePayment](https://pub.dev/packages/stripe_payment) |     🚫🙅🚫     |         🚫🙅🚫         |       |         | There's no reliable stripe packages for mobile and web, so we need to make a full in house replacement. The good news is that the only two features the package provided was entering credit cards and verifying some specific card transactions, which will take a bit, but is possible, I think. |
-|       [TimelineTile](https://pub.dev/packages/timeline_tile) |     ✅👌✅     |         🚫🙅🚫         |       |         | Wait for null safety support.                                |
-|                      [Tuple](https://pub.dev/packages/tuple) |     ✅👌✅     |         ✅👌✅         |       |         | N/A                                                          |
-|         [UrlLauncher](https://pub.dev/packages/url_launcher) |     ✅👌✅     |         ✅👌✅         |       |         | N/A                                                          |
-|              [Vibration](https://pub.dev/packages/vibration) |     ✅👌✅     |         ✅👌✅         |       |         | N/A                                                          |
+|       [TimelineTile](https://pub.dev/packages/timeline_tile) |     ✅👌✅     |         🚫🙅🚫         |   ✅   |    ✅    | Wait for null safety support.                                |
+|                      [Tuple](https://pub.dev/packages/tuple) |     ✅👌✅     |         ✅👌✅         |   ✅   |    ✅    | N/A                                                          |
+|         [UrlLauncher](https://pub.dev/packages/url_launcher) |     ✅👌✅     |         ✅👌✅         |   ✅   |    ✅    | N/A                                                          |
+|              [Vibration](https://pub.dev/packages/vibration) |     ✅👌✅     |         ✅👌✅         |  N/A  |   N/A   | N/A                                                          |
 |   [WebViewFlutter](https://pub.dev/packages/webview_flutter) |     🚫🙅🚫     |         ✅👌✅         |       |         | Since web apps don't have web view, because, it is the web, I need to find a [hack](#FlutterWebview) to show websites in the website. Going to be a problem, especially with CSR and CORS. Maybe have to solve with tabs using a dynamic import. |
 
 ## Decide between Canvas or HTML: Features
