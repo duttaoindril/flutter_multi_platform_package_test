@@ -101,22 +101,8 @@ Find all the pros and cons for each of the below, and figure out what works and 
 - Need to figure out [WebViewFlutter](https://pub.dev/packages/webview_flutter) - Since web apps don't have web view, because, it is the web, I need to find a hack to show websites in the website. Going to be a problem, especially with CSR and CORS. Maybe have to solve with tabs using a dynamic import.
 - See if it's possible to have Firebase packages that aren't web ready in the code base being used in non web platforms; maybe they'll need a dynamic import with noop web mirror functions
 - Help test more things and help [Decide between Canvas or HTML](#decidebetweencanvasorhtml)
-  - Test every `Feature` in the table
-  - Test [Intl](https://pub.dev/packages/intl) works on web, is it better on canvas or html?
-  - Test [MaskTextInputFormatter](https://pub.dev/packages/mask_text_input_formatter) works on web, is it better on canvas or html?
-  - Test [PageTransition](https://pub.dev/packages/page_transition) works on web, is it better on canvas or html?
-  - Test [PhotoView](https://pub.dev/packages/photo_view) works on web, is it better on canvas or html?
-  - Test [PrettyQRCode](https://pub.dev/packages/pretty_qr_code) works on web, is it better on canvas or html?
-  - Test [Provider](https://pub.dev/packages/provider) works on web, is it better on canvas or html?
-  - Test [Recase](https://pub.dev/packages/recase) works on web, is it better on canvas or html?
-  - Test [RxDart](https://pub.dev/packages/rxdart) works on web, is it better on canvas or html?
-  - Test [SharedPreferences](https://pub.dev/packages/shared_preferences) works on web, is it better on canvas or html?
-  - Test [SimpleAnimations](https://pub.dev/packages/simple_animations) works on web, is it better on canvas or html?
-  - Test [TimelineTile](https://pub.dev/packages/timeline_tile) works on web, is it better on canvas or html?
-  - Test [Tuple](https://pub.dev/packages/tuple) works on web, is it better on canvas or html?
-  - Test [UrlLauncher](https://pub.dev/packages/url_launcher) works on web, is it better on canvas or html?
-  - Test [Vibration](https://pub.dev/packages/vibration) works on web, is it better on canvas or html?
-- `flutter create --description "Flutter Multi Platform Package Test" --org "com.multiplatform.test" --project-name "flutter_multi_platform_package_test" -t app .`
+  - Test every `Feature` in the Features table
+  - Test every `Package` in the Packages Table
 
 ## Oindril
 
@@ -258,3 +244,4 @@ Future:
 
 ## MINIMIZE PACKAGES!!!!
 
+`flutter create --description "Flutter Multi Platform Package Test" --org "com.multiplatform.test" --project-name "flutter_multi_platform_package_test" -t app .`
