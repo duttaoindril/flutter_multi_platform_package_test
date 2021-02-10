@@ -172,6 +172,7 @@ Options:
 Web Responsiveness
 
 - https://flutter.dev/docs/development/ui/layout/responsive
+- https://www.youtube.com/watch?v=0mp-Ok00WZE
 
  ### FlutterWebview:
 
