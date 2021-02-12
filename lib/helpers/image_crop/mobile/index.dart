@@ -13,9 +13,9 @@ Future<Uint8List> cropImage(
   bool circle = false,
   int compressQuality = 100,
 }) async {
-  if (oldFile == null) {
-    return oldFile;
-  }
+  // if (oldFile == null) {
+  //   return oldFile;
+  // }
   // if (fileTypeFromFile(oldFile) == '.gif') {
   //   return oldFile;
   // }
@@ -80,5 +80,5 @@ Future<Uint8List> cropImage(
         ),
   ))
       .readAsBytes();
-  return newFile ?? oldFile;
+  return newFile;
 }

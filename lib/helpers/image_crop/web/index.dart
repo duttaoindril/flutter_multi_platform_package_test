@@ -11,9 +11,9 @@ Future<ui.Image> _loadImageFromUint8List(Uint8List inputImage) async {
   return completer.future;
 }
 
-Future<Uint8List> _imageToUint8List(ui.Image inputImagemage) async {
+Future<Uint8List> _imageToUint8List(ui.Image inputImage) async {
   final ByteData? byteData =
-      await inputImagemage.toByteData(format: ui.ImageByteFormat.png);
+      await inputImage.toByteData(format: ui.ImageByteFormat.png);
   if (byteData != null) {
     return byteData.buffer.asUint8List();
   } else {
