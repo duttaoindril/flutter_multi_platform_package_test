@@ -50,24 +50,24 @@ I also started looking at null safety, since starting next year it'll be in beta
 |     [FlutterSwiper](https://pub.dev/packages/flutter_swiper) |     ✅👌✅     |         🚫🙅🚫         |   ✅   |    ✅    | Wait for null safety support. May not happen since the author have not update the package since 2019. |
 | [FlutterTypeAhead](https://pub.dev/packages/flutter_typeahead) |     ✅👌✅     |         🚫🙅🚫         |   ✅   |    ✅    | Wait for null safety support. Few errors being thrown due to a lack of keyboards in web, and it may have more errors, but it should be fine. |
 | [FontAwesomeFlutter](https://pub.dev/packages/font_awesome_flutter) |     ✅👌✅     |         ✅👌✅         |   ✅   |    ✅    | It's a good package but... we don't need it at all, since [FlutterIcons](https://pub.dev/packages/flutter_icons) has all the icons it does. However that library doesn't have null safety support, and this one does. Still, removing is does increasing loading speed. |
-|                      [Fuzzy](https://pub.dev/packages/fuzzy) |     ✅👌✅     |         🚫🙅🚫         |       |         | Wait for null safety support.                                |
-|             [GetIt](https://pub.dev/packages/get_it/install) |     ✅👌✅     |         ✅👌✅         |       |         | It's a good package but, we also won't need it, especially after we migrate to Riverpod. |
+|                      [Fuzzy](https://pub.dev/packages/fuzzy) |     ✅👌✅     |         🚫🙅🚫         |   ✅   |    ✅    | Wait for null safety support. Null-safety verson in pre-released. |
+|            [Get_It](https://pub.dev/packages/get_it/install) |     ✅👌✅     |         ✅👌✅         |   ✅   |    ✅    | It's a good package but, we also won't need it, especially after we migrate to Riverpod. Have dependency conflect with current flutter (beta, 1.26.0-17.4.pre,) if using lates null-safe version (get_it 6.0.0-nullsafety.2). |
 |                        [Http](https://pub.dev/packages/http) |     ✅👌✅     |         🚫🙅🚫         |       |         | Wait for null safety support.                                |
-|       [ImageCropper](https://pub.dev/packages/image_cropper) |     🚫🙅🚫     |         🚫🙅🚫         |       |         | ??? (Chieh)                                                  |
-|         [ImagePicker](https://pub.dev/packages/image_picker) |     🚫🙅🚫     |         🚫🙅🚫         |       |         | ??? (Chieh)                                                  |
+|       [ImageCropper](https://pub.dev/packages/image_cropper) |     🚫🙅🚫     |         🚫🙅🚫         |       |         | Split web using flutter_crop_widget                          |
+|         [ImagePicker](https://pub.dev/packages/image_picker) |     🚫🙅🚫     |         🚫🙅🚫         |       |         |                                                              |
 |        [Intercom](https://pub.dev/packages/intercom_flutter) |     🚫🙅🚫     |         🚫🙅🚫         |       |         | Costs a lot, so we need to decide if we want to keep it or replace it with something else. If we want to keep it, we have to make it work in Flutter Web, which looks like it won't be a good implementation any time soon. If we want to replace it, I want to go with this Flutter compatible one called [Papercups](https://pub.dev/packages/papercups_flutter ). Or we don't have either. Either way, I need to stick in Segment for event tracking for stall points and admin panel data, and I want to use [Storytime](https://github.com/papercups-io/storytime) on Flutter Web. |
 |                        [Intl](https://pub.dev/packages/intl) |     ✅👌✅     |         ✅👌✅         |       |         | N/A                                                          |
 |       [LaunchReview](https://pub.dev/packages/launch_review) |     🚫🙅🚫     |         🚫🙅🚫         |       |         | I found something a million times better. [InAppReview](https://pub.dev/packages/in_app_review). Web doesn't have a replacement, so I just need to make the whole thing work at minimum to [send feedback to us](https://pub.dev/packages/rating_dialog) for the NPS score in the Admin Panel, and if it's a positive score and not on web it opens the in app review prompt. |
 |   [MTIF](https://pub.dev/packages/mask_text_input_formatter) |     ✅👌✅     |         ✅👌✅         |       |         | N/A                                                          |
 |                        [Mime](https://pub.dev/packages/mime) |     ✅👌✅     |         ✅👌✅         |       |         | N/A                                                          |
-|   [PageTransition](https://pub.dev/packages/page_transition) |     ✅👌✅     |         ✅👌✅         |       |         | N/A                                                          |
+|   [PageTransition](https://pub.dev/packages/page_transition) |     ✅👌✅     |         ✅👌✅         |   ✅   |    ✅    | N/A                                                          |
 |       [PathProvider](https://pub.dev/packages/path_provider) |     🚫🙅🚫     |         🚫🙅🚫         |       |         | Remove, unneeded with Web.                                   |
 | [PermissionHandler](https://pub.dev/packages/permission_handler) |     🚫🙅🚫     |         🚫🙅🚫         |       |         | ??? (Chieh)                                                  |
-|             [PhotoView](https://pub.dev/packages/photo_view) |     ✅👌✅     |         🚫🙅🚫         |       |         | Wait for null safety support.                                |
-|      [PrettyQRCode](https://pub.dev/packages/pretty_qr_code) |     ✅👌✅     |         🚫🙅🚫         |       |         | Wait for null safety support. We can use it if we want to.   |
+|             [PhotoView](https://pub.dev/packages/photo_view) |     ✅👌✅     |         🚫🙅🚫         |   ✅   |    ✅    | Wait for null safety support.                                |
+|      [PrettyQRCode](https://pub.dev/packages/pretty_qr_code) |     ✅👌✅     |         🚫🙅🚫         |   ✅   |    ✅    | Wait for null safety support. We can use it if we want to.   |
 |                [Provider](https://pub.dev/packages/provider) |     ✅👌✅     |         ✅👌✅         |   ✅   |    ✅    | Replace with [Riverpod](https://pub.dev/packages/hooks_riverpod) after [null-safe](https://github.com/rrousselGit/river_pod/issues/220) |
 |                    [Recase](https://pub.dev/packages/recase) |     ✅👌✅     |         ✅👌✅         |   ✅   |    ✅    | N/A                                                          |
-| [ReceiveSharingIntent](https://pub.dev/packages/receive_sharing_intent) |     🚫🙅🚫     |         🚫🙅🚫         |       |         | ??? (Chieh)                                                  |
+| [ReceiveSharingIntent](https://pub.dev/packages/receive_sharing_intent) |     🚫🙅🚫     |         🚫🙅🚫         |       |         | Probaby dont have it for the web.                            |
 |                    [RxDart](https://pub.dev/packages/rxdart) |     ✅👌✅     |         ✅👌✅         |   ✅   |    ✅    | N/A                                                          |
 |                      [Share](https://pub.dev/packages/share) |     🚫🙅🚫     |         ✅👌✅         |       |         | ??? (Chieh) Either Plan A: Replace with [SharePlus](https://pub.dev/packages/share_plus) or go with Plan B. |
 |         [ShareExtend](https://pub.dev/packages/share_extend) |     🚫🙅🚫     |         🚫🙅🚫         |       |         | ??? (Chieh)                                                  |
@@ -84,13 +84,13 @@ I also started looking at null safety, since starting next year it'll be in beta
 
 Find all the pros and cons for each of the below, and figure out what works and what doesn't on HTML and Canvas, and fill out the `HTML? | Canvas?` column, so make sure to try everything on both; things to look out for:
 
-|                                         Feature | HTML? | Canvas? | Solution & Notes |
-| ----------------------------------------------: | :---: | :-----: | ---------------- |
-|                                          Emojis |       |         |                  |
-|                                           Fonts |       |         |                  |
-| [SVGs]( https://github.com/dnfield/flutter_svg) |       |         |                  |
-|                                          Images |   ✅   |    ✅    |                  |
-|                                         Caching |       |         |                  |
+|                                         Feature | HTML? | Canvas? | Solution & Notes                                   |
+| ----------------------------------------------: | :---: | :-----: | -------------------------------------------------- |
+|                                          Emojis |   ✅   |    ✅    | More stable on html. Also a bit lagging on Canvas. |
+|                                           Fonts |       |         |                                                    |
+| [SVGs]( https://github.com/dnfield/flutter_svg) |   🚫   |    ✅    | Currently having issue with html                   |
+|                                          Images |   ✅   |    ✅    |                                                    |
+|                                         Caching |       |         |                                                    |
 
 ## Chieh
 
