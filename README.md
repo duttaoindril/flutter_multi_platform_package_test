@@ -246,3 +246,49 @@ Future:
 ## MINIMIZE PACKAGES!!!!
 
 `flutter create --description "Flutter Multi Platform Package Test" --org "com.multiplatform.test" --project-name "flutter_multi_platform_package_test" -t app .`
+
+
+
+# 
+
+1. Writing to firebase
+2. The actual value is just null
+3. Something broke
+   1. It can technically be null and was not accounted for in 2
+   2. It can't be null, and something is wrong with the data
+
+General Rule: Define something as null safe, and make exceptions for being nullable
+
+Type - Null Safe | Type? - Nullable
+
+Easier to go Type (Null Safe) => Type? (Nullable) than Type? (Nullable) => Type (Null Safe)
+
+# DOCUMENT MODEL GOALS:
+
+- Have two different implementations:
+  - Main Class
+    - Contains fields and their types, with null-safe fields which always should have a value
+      - Needs to throw if DB gives value that doesn't match
+    - Contains FirebaseDocumentModel with a reference and collection, which is ignored in toMap
+    - Always come from firebase, a direct mapping of the data in the backend
+  - Alternative Way to:
+    - Have `default<ModelName>` values where the values can be null, following the main class
+    - Have a way to write data where some values don't exist, following the main class
+- Any helper methods on classes should be extentions so that it supports null safe values instead of 
+  - Check sub class methods get extention benefits - num to int/double
+- Minimize code needed per field
+  - fromMap factory boilerplate
+  - toMap factory boilerplate
+  - toJson, toString, equals, and Dashcode generation
+- Take advantage of Object Oriented Programming
+  - `extends`
+  - `implements`
+  - `with`
+
+
+
+Model
+
+^ Document Model
+
+^ FirebaseDocumentModel
