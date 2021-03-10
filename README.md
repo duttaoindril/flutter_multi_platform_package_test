@@ -84,13 +84,13 @@ I also started looking at null safety, since starting next year it'll be in beta
 
 Find all the pros and cons for each of the below, and figure out what works and what doesn't on HTML and Canvas, and fill out the `HTML? | Canvas?` column, so make sure to try everything on both; things to look out for:
 
-|                                         Feature | HTML? | Canvas? | Solution & Notes                                   |
-| ----------------------------------------------: | :---: | :-----: | -------------------------------------------------- |
-|                                          Emojis |   ✅   |   ✅⚠️✅   | More stable on html. Also a bit lagging on Canvas. |
-|                                           Fonts |       |         |                                                    |
-| [SVGs]( https://github.com/dnfield/flutter_svg) |   🚫   |    ✅    | Currently having issue with html                   |
-|                                          Images |   ✅   |    ✅    |                                                    |
-|                                         Caching |       |         |                                                    |
+|                                         Feature | HTML? | Canvas? | Solution & Notes                                             |
+| ----------------------------------------------: | :---: | :-----: | ------------------------------------------------------------ |
+|                                          Emojis |   ✅   |   ✅⚠️✅   | More stable on html. Also a bit lagging on Canvas.           |
+|                                           Fonts |       |         |                                                              |
+| [SVGs]( https://github.com/dnfield/flutter_svg) |   🚫   |    ✅    | Currently having issue with html. Working on dev channel but a bit discoloration. |
+|                                          Images |   ✅   |    ✅    |                                                              |
+|                                         Caching |       |         |                                                              |
 
 ## Chieh
 
