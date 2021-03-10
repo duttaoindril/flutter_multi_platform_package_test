@@ -5,7 +5,7 @@
 1. ~~Clean up all existing branches of the app, condense into one main one, and push a release to `master` 0.2.3~~
 2. Get the current app “web-safe” on a new branch `web` 
    - Migrate packages to be web and null safe
-   - Add null safety to the code base
+   - ~~Add null safety to the code base~~ - https://github.com/Spotlyt/spotlyt-app/pull/45
    - Have web and android and iOS versions working
 3. Once we're happy with `web` working well on all platforms, merge into `development`, but not `master`, and save the new web and null safe ready `development`  branch to `stable-web` as an archive of the old web ready app.
 4. Start the new radically `simple`, and `simple-dev` branch version of the app based off of the `development` branch from which we will pull in code from `stable-web`
@@ -86,7 +86,7 @@ Find all the pros and cons for each of the below, and figure out what works and 
 
 |                                         Feature | HTML? | Canvas? | Solution & Notes                                   |
 | ----------------------------------------------: | :---: | :-----: | -------------------------------------------------- |
-|                                          Emojis |   ✅   |    ✅    | More stable on html. Also a bit lagging on Canvas. |
+|                                          Emojis |   ✅   |   ✅⚠️✅   | More stable on html. Also a bit lagging on Canvas. |
 |                                           Fonts |       |         |                                                    |
 | [SVGs]( https://github.com/dnfield/flutter_svg) |   🚫   |    ✅    | Currently having issue with html                   |
 |                                          Images |   ✅   |    ✅    |                                                    |
@@ -292,3 +292,53 @@ Model
 ^ Document Model
 
 ^ FirebaseDocumentModel
+
+
+
+
+
+https://pub.dev/packages/chest
+
+https://pub.dev/packages/stash
+
+https://pub.dev/packages/simple_json_persistence
+
+https://pub.dev/packages/moor
+
+https://pub.dev/packages/screenshot
+
+https://pub.dev/packages/isolate_json
+
+https://pub.dev/packages/stack_trace/score
+
+https://pub.dev/packages/kind
+
+https://pub.dev/packages/equatable
+
+
+
+https://pub.dev/packages/worker2
+
+
+
+Icons:
+
+https://fluttericon.com
+
+https://pub.dev/packages/fluttericon
+
+https://github.com/oblador/react-native-vector-icons/ | https://oblador.github.io/react-native-vector-icons/ | https://pub.dev/packages/flutter_icons#bundled-icon-sets
+
+https://github.com/leungwensen/svg-icon
+
+
+
+https://github.com/ant-design/ant-design-icons/tree/master/packages/icons-svg/svg
+
+
+
+State Restoration:
+
+- https://dev.to/pedromassango/what-is-state-restoration-and-how-to-use-it-in-flutter-5blm
+
+- https://www.raywenderlich.com/1395-state-restoration-tutorial-getting-started
