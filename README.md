@@ -37,9 +37,9 @@ I also started looking at null safety, since starting next year it'll be in beta
 |            [Animations](https://pub.dev/packages/animations) |     ✅👌✅     |         ✅👌✅         |   ✅   |    ✅    |                                                              |
 |                      [Async](https://pub.dev/packages/async) |     ✅👌✅     |         ✅👌✅         |   ✅   |    ✅    | N/A                                                          |
 |                    [Badges](https://pub.dev/packages/badges) |     ✅👌✅     |         🚫🙅🚫         |   ✅   |    ✅    | Null safety coming [soon](https://github.com/yako-dev/flutter_badges/pull/44) (Feb 2021) |
-|        [CNIP](https://pub.dev/packages/cached_network_image) |     ⚠️🤷⚠️     |         🚫🙅🚫         |       |         | Null safety in developement release., or replace with [FadeInImage.memoryNetwork](https://api.flutter.dev/flutter/widgets/FadeInImage-class.html#FadeInImage.memoryNetwork). Version confliect, but is already in process of migrating. web should be supported |
+|        [CNIP](https://pub.dev/packages/cached_network_image) |     ⚠️🤷⚠️     |         🚫🙅🚫         |       |         | Null safety in developement release., or replace with [FadeInImage.memoryNetwork](https://api.flutter.dev/flutter/widgets/FadeInImage-class.html#FadeInImage.memoryNetwork). Version confliect, but is already in process of migrating. |
 |   [CarouselSlider](https://pub.dev/packages/carousel_slider) |     ✅👌✅     |         ✅👌✅         |   ✅   |    ✅    | Not very web friendly, should have buttons or something to indicate that it can slide. Null safety version release in dev. |
-|            [Characters](https://pub.dev/packages/characters) |     ✅👌✅     |         ✅👌✅         |   ✅   |    ✅    | N/A, but definitely exposed a [bug and it's fix](https://github.com/flutter/flutter/issues/53897#issuecomment-716638453). Not showing in canvas. |
+|            [Characters](https://pub.dev/packages/characters) |     ✅👌✅     |         ✅👌✅         |   ✅   |    🚫    | N/A, but definitely exposed a [bug and it's fix](https://github.com/flutter/flutter/issues/53897#issuecomment-716638453). Not showing in canvas. |
 |     [DevicePreview](https://pub.dev/packages/device_preview) |     ⚠️🤷⚠️     |         🚫🙅🚫         |   🚫   |    🚫    | Wait for null safety support, or just remove it since it's useful but not crucial, and is very buggy on web. Some [workaround](https://github.com/aloisdeniel/flutter_device_preview/issues/98) for null safety |
 |       [FlutterHooks](https://pub.dev/packages/flutter_hooks) |     ✅👌✅     |         🚫🙅🚫         |   ✅   |    ✅    | Wait for null safety support. Null-safety pre-release avaliable. |
 |       [FlutterIcons](https://pub.dev/packages/flutter_icons) |     ✅👌✅     |         🚫🙅🚫         |   ✅   |    ✅    | Wait for null safety support. Small problem - it did not show icons the first time I rendered it, but then it showed it fine. [Might have to try this if it breaks again](https://github.com/flutter/flutter/issues/32540#issuecomment-707900491). If necessary, alternatives can be found. |
@@ -84,13 +84,13 @@ I also started looking at null safety, since starting next year it'll be in beta
 
 Find all the pros and cons for each of the below, and figure out what works and what doesn't on HTML and Canvas, and fill out the `HTML? | Canvas?` column, so make sure to try everything on both; things to look out for:
 
-|                                         Feature | HTML? | Canvas? | Solution & Notes                                             |
-| ----------------------------------------------: | :---: | :-----: | ------------------------------------------------------------ |
-|                                          Emojis |   ✅   |    ✅    | More stable on html. Also a bit lagging on Canvas.           |
-|                                           Fonts |       |         |                                                              |
-| [SVGs]( https://github.com/dnfield/flutter_svg) |   🚫   |    ✅    | Currently having issue with html. Working with masster channel, waiting to be merge to beta. |
-|                                          Images |   ✅   |    ✅    |                                                              |
-|                                         Caching |       |         |                                                              |
+|                                         Feature | HTML? | Canvas? | Solution & Notes                                   |
+| ----------------------------------------------: | :---: | :-----: | -------------------------------------------------- |
+|                                          Emojis |   ✅   |    ✅    | More stable on html. Also a bit lagging on Canvas. |
+|                                           Fonts |       |         |                                                    |
+| [SVGs]( https://github.com/dnfield/flutter_svg) |   🚫   |    ✅    | Currently having issue with html                   |
+|                                          Images |   ✅   |    ✅    |                                                    |
+|                                         Caching |       |         |                                                    |
 
 ## Chieh
 
