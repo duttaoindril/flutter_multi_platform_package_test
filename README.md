@@ -340,5 +340,175 @@ https://github.com/ant-design/ant-design-icons/tree/master/packages/icons-svg/sv
 State Restoration:
 
 - https://dev.to/pedromassango/what-is-state-restoration-and-how-to-use-it-in-flutter-5blm
-
 - https://www.raywenderlich.com/1395-state-restoration-tutorial-getting-started
+
+
+
+
+
+
+
+
+
+
+
+```
+// the top-right of this page.
+
+// abstract class UnsafeA<GenderType extends int?, DateTimeType extends DateTime?> {
+//   GenderType? gender;
+//   DateTimeType? birthday;
+
+//   UnsafeA({
+//     this.gender,
+//     this.birthday,
+//    });
+// }
+
+// class SafeA implements UnsafeA<int, DateTime> {
+//   @override
+//   int gender;
+//   DateTime birthday;
+
+//   SafeA({
+//     required this.gender,
+//     required this.birthday,
+//    });
+// }
+
+// abstract class UnsafeA {
+//   int? gender;
+//   DateTime? birthday;
+
+//   UnsafeA({
+//     this.gender,
+//     this.birthday,
+//    });
+// }
+
+// class SafeA implements UnsafeA {
+//   @override
+//   int gender;
+//   @override
+//   DateTime birthday;
+
+//   SafeA({
+//     required this.gender,
+//     required this.birthday,
+//    });
+// }
+
+abstract class FirebaseDocumentModel {
+  String? get reference;
+
+  String toString() {
+    return 'My reference is $reference';
+  }
+
+  bool operator ==(Object other) =>
+      other is FirebaseDocumentModel && reference == other.reference;
+}
+
+class SafeFirebaseDocumentModel extends FirebaseDocumentModel {
+  String reference;
+
+  SafeFirebaseDocumentModel({required this.reference});
+}
+
+class UnsafeFirebaseDocumentModel extends FirebaseDocumentModel {
+  String? reference;
+
+  UnsafeFirebaseDocumentModel({this.reference});
+}
+
+extension FirebaseDocumentModelExtension on FirebaseDocumentModel {
+  static SafeFirebaseDocumentModel safeFromMap(Map<String, Object> map) {
+    return SafeFirebaseDocumentModel(
+      reference: map['reference'].toString(),
+    );
+  }
+}
+
+abstract class UserDocumentModel {
+  int? get gender;
+  FirebaseDocumentModel? get firebaseDocumentModel;
+
+  String toString() {
+    return 'My gender is $gender, ${firebaseDocumentModel.toString()}';
+  }
+
+  bool operator ==(Object other) =>
+      other is UserDocumentModel &&
+      gender == other.gender &&
+      firebaseDocumentModel == other.firebaseDocumentModel;
+
+//   factory UserDocumentModel.fromMap(Map<String, Object> map) => SafeUserDocumentModel(
+//     firebaseDocumentModel: FirebaseDocumentModelExtension.safeFromMap(map),
+//     gender: int.parse(map['gender'].toString()),
+//   );
+}
+
+class SafeUserDocumentModel extends UserDocumentModel {
+  int gender;
+  SafeFirebaseDocumentModel firebaseDocumentModel;
+
+  SafeUserDocumentModel(
+      {required this.gender, required this.firebaseDocumentModel});
+}
+
+class UnsafeUserDocumentModel extends UserDocumentModel {
+  int? gender;
+  UnsafeFirebaseDocumentModel? firebaseDocumentModel;
+
+  UnsafeUserDocumentModel({this.gender, this.firebaseDocumentModel});
+}
+
+extension UserDocumentModelExtension on UserDocumentModel {
+  static SafeUserDocumentModel safeFromMap(Map<String, Object> map) {
+    return SafeUserDocumentModel(
+      firebaseDocumentModel: FirebaseDocumentModelExtension.safeFromMap(map),
+      gender: int.parse(map['gender'].toString()),
+    );
+  }
+}
+
+void main() {
+  final UnsafeUserDocumentModel defaultUserDocumentModel =
+      UnsafeUserDocumentModel();
+  final UnsafeUserDocumentModel unsafeUserDocumentModel =
+      UnsafeUserDocumentModel(
+    gender: 1,
+  );
+  final UnsafeUserDocumentModel lessUnsafeUserDocumentModel =
+      UnsafeUserDocumentModel(
+    gender: 1,
+    firebaseDocumentModel: UnsafeFirebaseDocumentModel(reference: 'users/od'),
+  );
+  final SafeUserDocumentModel userDocumentModel = SafeUserDocumentModel(
+    gender: 1,
+    firebaseDocumentModel: SafeFirebaseDocumentModel(reference: 'users/od'),
+  );
+  final SafeUserDocumentModel mapUserDocumentModel =
+      UserDocumentModelExtension.safeFromMap({
+    'gender': 2,
+    'reference': 'woah',
+  });
+  print(defaultUserDocumentModel);
+  print(userDocumentModel);
+  print(mapUserDocumentModel);
+  print(
+      'defaultUserDocumentModel == unsafeUserDocumentModel: ${defaultUserDocumentModel == unsafeUserDocumentModel}');
+  print(
+      'defaultUserDocumentModel == lessUnsafeUserDocumentModel: ${defaultUserDocumentModel == lessUnsafeUserDocumentModel}');
+  print(
+      'defaultUserDocumentModel == userDocumentModel: ${defaultUserDocumentModel == userDocumentModel}');
+  print(
+      'unsafeUserDocumentModel == lessUnsafeUserDocumentModel: ${unsafeUserDocumentModel == lessUnsafeUserDocumentModel}');
+  print(
+      'unsafeUserDocumentModel == userDocumentModel: ${unsafeUserDocumentModel == userDocumentModel}');
+  print(
+      'lessUnsafeUserDocumentModel == userDocumentModel: ${lessUnsafeUserDocumentModel == userDocumentModel}');
+}
+
+```
+
